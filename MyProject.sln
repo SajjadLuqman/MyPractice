@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyProject", "MyProject\MyProject.csproj", "{E1BF739F-22E2-42B6-822D-6F7B59E6C22C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentations", "Presentations", "{E4E3A4FB-7DEA-4DCF-B846-136C35B3BC3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiServices", "ApiServices", "{109EAB9B-B6C2-43EA-B1D9-4FDC01844963}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1BF739F-22E2-42B6-822D-6F7B59E6C22C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1BF739F-22E2-42B6-822D-6F7B59E6C22C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1BF739F-22E2-42B6-822D-6F7B59E6C22C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1BF739F-22E2-42B6-822D-6F7B59E6C22C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E1BF739F-22E2-42B6-822D-6F7B59E6C22C} = {E4E3A4FB-7DEA-4DCF-B846-136C35B3BC3B}
+	EndGlobalSection
+EndGlobal
