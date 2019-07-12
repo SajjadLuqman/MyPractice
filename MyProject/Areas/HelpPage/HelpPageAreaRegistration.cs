@@ -9,6 +9,7 @@ namespace MyProject.Areas.HelpPage
         {
             get
             {
+
                 return "HelpPage";
             }
         }
