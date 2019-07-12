@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyProject.Models
+namespace MyProject.DAL.Constants
 {
-    public class Class1
+   public static class SQLs
     {
+        public const string GetStudents = "select * from Students";
     }
 }
