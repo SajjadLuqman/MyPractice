@@ -14,6 +14,8 @@ namespace MyProject.Core.Constants
             public const string GetStudentById = "/api/students/GetStudentById/{0}";
             public const string UpdateStudent = "/api/students/UpdateStudent";
             public const string InsertStudent = "/api/students/InsertStudent";
+            public const string DeleteStudentById = "/api/students/DeleteStudentById/{0}";
+
         }
 
         public static class Teachers

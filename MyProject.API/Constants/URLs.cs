@@ -10,7 +10,8 @@ namespace MyProject.API.Constants
         public static class Student
         {
             public const string GetAllStudentIHttpActionResult = "~/api/students/getAllStudentsIHttpActionResult";
-            public const string GetAllStudentHttpResponseMessage = "~/api/students/getAllStudentsHttpResponseMessage";
+
+            public const string getAllStudents = "~/api/students/getAllStudents";
             public const string GetStudentById = "~/api/students/GetStudentById/{studentId}";
             public const string DeleteStudentById = "~/api/students/DeleteStudentById/{studentId}";
             public const string UpdateStudent =  "~/api/students/UpdateStudent";

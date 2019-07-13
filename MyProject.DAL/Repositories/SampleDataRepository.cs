@@ -27,7 +27,7 @@ namespace MyProject.DAL.Repositories
             return QueryExecutor.Query<Student>(StoreProcedures.spGetStudentById.ToString(), new { StudentId = Id }, CommandType.StoredProcedure).FirstOrDefault();
         }
 
-        public object DeleteStudentById(int Id)
+        public int DeleteStudentById(int Id)
         {
             return QueryExecutor.Execute(StoreProcedures.spDeleteStudent.ToString(), new { StudentId = Id }, CommandType.StoredProcedure);
         }

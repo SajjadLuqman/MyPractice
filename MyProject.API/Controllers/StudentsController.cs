@@ -25,7 +25,7 @@ namespace MyProject.API.Controllers
             return Ok(_repo.GetStudentsBySP());
         }
 
-        [Route(URLs.Student.GetAllStudentHttpResponseMessage)]
+        [Route(URLs.Student.getAllStudents)]
         [HttpGet]
         public HttpResponseMessage GetStudentsBySPSecondWay()
         {
