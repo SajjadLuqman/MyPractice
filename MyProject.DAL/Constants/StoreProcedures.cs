@@ -9,6 +9,10 @@ namespace MyProject.DAL.Constants
    public enum StoreProcedures
     {
         spGetStudents,
-        spGetStudentById
+        spGetStudentById,
+        spDeleteStudent,
+        spUpdateStudent,
+        spInsertStudent,
+        spGetLastId
     }
 }

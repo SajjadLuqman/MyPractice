@@ -89,7 +89,7 @@ namespace MyProject.DAL
                     conn.Open();
                 }
 
-                return conn.Execute(sql, param, commandType: commandType);
+                return conn.ExecuteScalar(sql, param, commandType: commandType);
             }
         }
 
