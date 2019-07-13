@@ -20,9 +20,9 @@ namespace MyProject.Controllers
         {
             var allStudents = _repo.GetAllStudents();
             var student = _repo.GetStudentById(5);
-            var Effect = _repo.DeleteStudentById(6);
-            var effectRow = _repo.UpdateStudents(new Models.Student() { StudentId=9, Name="Pakistan", Address="Zindabad" });
-            var PKID =  _repo.AddStudents(new Models.Student() {  Name="Pakistan", Address= "Zindabad" });
+            var Effect = _repo.DeleteStudentById(7);
+            var effectRow = _repo.UpdateStudents(new Models.Student() { StudentId=10, Name="Pakistan ii ii", Address="Zindabauud" });
+            var PKID =  _repo.AddStudents(new Models.Student() {  Name="Pakuuistan", Address= "Zindabahhhd" });
             ViewBag.Title = "Home Page";
 
             return View();
