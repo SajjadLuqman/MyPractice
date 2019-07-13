@@ -116,6 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Constants\URLs.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -135,8 +138,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyProject.BusinessLogic\MyProject.BusinessLogic.csproj">
+      <Project>{43289c95-6931-439f-bccf-412795b88fc2}</Project>
+      <Name>MyProject.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyProject.Core\MyProject.Core.csproj">
+      <Project>{F4D6DA21-2463-43B9-8205-6A45DD8141C4}</Project>
+      <Name>MyProject.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyProject.Models\MyProject.Models.csproj">
+      <Project>{1f86d9e9-e798-4e9f-b772-2a9822fdd43d}</Project>
+      <Name>MyProject.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
