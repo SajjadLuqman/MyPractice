@@ -6,13 +6,28 @@ using System.Threading.Tasks;
 
 namespace MyProject.DAL.Constants
 {
-   public enum StoreProcedures
+    public enum StoreProcedures
     {
         spGetStudents,
         spGetStudentById,
         spDeleteStudent,
         spUpdateStudent,
         spInsertStudent,
-        spGetLastId
+        spGetLastId,
+        spDeleteTracking,
+        spDeleteUser,
+        spInsertTracking,
+        spInsertUser,
+        spOrderDelete,
+        spOrderInsert,
+        spOrderShow,
+        spOrderTrackingShow,
+        spOrderUpdate,
+        spShowUser,
+        spUpdateTracking,
+        spUpdateUser,
+        spOrderTrackingByOrderId,
+        spOrderTrackingByTrackId,
+        spOrderById
     }
 }

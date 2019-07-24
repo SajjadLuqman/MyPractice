@@ -17,5 +17,23 @@ namespace MyProject.API.Constants
             public const string UpdateStudent =  "~/api/students/UpdateStudent";
             public const string InsertStudent =  "~/api/students/InsertStudent";
         }
+
+        public static class Order
+        {
+            public const string GetOrder = "~/api/order/GetOrder";
+            public const string GetOrderByOrderId = "~/api/order/GetOrderByOrderId/{OrderId}";
+            public const string DeleteOrderByOrderId = "~/api/order/DeleteOrderByOrderId/{OrderId}";
+            public const string UpdateOrder = "~/api/order/UpdateOrder";
+            public const string InsertOrder = "~/api/order/InsertOrder";
+        }
+
+        public static class Tracking
+        {
+            public const string GetTracking = "~/api/Tracking/GetTracking";
+            public const string GetTrackingByTrackingId = "~/api/Tracking/GetTrackingByTrackingId/{TrackingId}";
+            public const string DeleteTrackingByTrackingId = "~/api/Tracking/DeleteTrackingByTrackingId/{TrackingId}";
+            public const string UpdateTracking = "~/api/Tracking/UpdateTracking";
+            public const string InsertTracking = "~/api/Tracking/InsertTracking";
+        }
     }
 }
