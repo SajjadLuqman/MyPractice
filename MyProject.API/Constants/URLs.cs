@@ -35,5 +35,14 @@ namespace MyProject.API.Constants
             public const string UpdateTracking = "~/api/Tracking/UpdateTracking";
             public const string InsertTracking = "~/api/Tracking/InsertTracking";
         }
+
+        public static class Users
+        {
+            public const string GetUsers = "~/api/Users/GetUsers";
+            public const string GetUsersByUsersId = "~/api/Users/GetUsersByUsersId/{UsersId}";
+            public const string DeleteUsersByUsersId = "~/api/Users/DeleteUsersByUsersId/{UsersId}";
+            public const string UpdateUsers = "~/api/Users/UpdateUsers";
+            public const string InsertUsers = "~/api/Users/InsertUsers";
+        }
     }
 }

@@ -57,6 +57,8 @@
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\SampleDataRepository.cs" />
+    <Compile Include="Repositories\TrackingRepository.cs" />
+    <Compile Include="Repositories\UsersRepository.cs" />
     <Compile Include="SqlQueryExecutor.cs" />
   </ItemGroup>
   <ItemGroup>

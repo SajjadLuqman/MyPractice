@@ -28,6 +28,7 @@ namespace MyProject.DAL.Constants
         spUpdateUser,
         spOrderTrackingByOrderId,
         spOrderTrackingByTrackId,
-        spOrderById
+        spOrderById,
+        spShowUserById
     }
 }

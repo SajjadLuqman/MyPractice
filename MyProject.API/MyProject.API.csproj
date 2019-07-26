@@ -153,6 +153,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constants\URLs.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\TrackingController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
