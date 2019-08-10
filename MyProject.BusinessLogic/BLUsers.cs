@@ -17,11 +17,16 @@ namespace MyProject.BusinessLogic
             _repo = new UsersRepository();
         }
 
+        public bool Login(string userName, string password)
+        {
+            return _repo.Get().Exists(x=>x.UserName== userName && x.Password == password);
+        }
 
         public List<Users> Get()
         {
             return _repo.Get();
         }
+
         public Users GetById(string UsersId)
         {
             return _repo.GetById(UsersId);
