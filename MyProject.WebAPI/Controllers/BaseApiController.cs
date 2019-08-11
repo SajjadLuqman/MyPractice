@@ -19,7 +19,7 @@ namespace MyProject.API.Controllers
         }
 
 
-        protected virtual HttpResponseMessage BadRequest(string errorMessage)
+        protected new virtual HttpResponseMessage BadRequest(string errorMessage)
         {
             return new HttpResponseMessage()
             {
@@ -28,7 +28,7 @@ namespace MyProject.API.Controllers
             };
         }
 
-        protected virtual HttpResponseMessage OK(string response)
+        protected  virtual HttpResponseMessage OK(string response)
         {
             return new HttpResponseMessage()
             {
