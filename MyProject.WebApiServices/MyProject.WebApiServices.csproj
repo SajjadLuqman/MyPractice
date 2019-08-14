@@ -129,7 +129,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AuthorizeAttribute.cs" />
+    <Compile Include="Constants\URLs.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\DataController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Controllers\TrackingController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -150,6 +157,20 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyProject.BusinessLogic\MyProject.BusinessLogic.csproj">
+      <Project>{43289c95-6931-439f-bccf-412795b88fc2}</Project>
+      <Name>MyProject.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyProject.Core\MyProject.Core.csproj">
+      <Project>{f4d6da21-2463-43b9-8205-6a45dd8141c4}</Project>
+      <Name>MyProject.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyProject.Models\MyProject.Models.csproj">
+      <Project>{1f86d9e9-e798-4e9f-b772-2a9822fdd43d}</Project>
+      <Name>MyProject.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
