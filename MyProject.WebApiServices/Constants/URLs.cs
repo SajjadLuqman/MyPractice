@@ -43,6 +43,7 @@ namespace MyProject.WebApiServices.Constants
             public const string DeleteUsersByUsersId = "~/api/Users/DeleteUsersByUsersId/{UsersId}";
             public const string UpdateUsers = "~/api/Users/UpdateUsers";
             public const string InsertUsers = "~/api/Users/InsertUsers";
+            public const string getToken = "~/token";
         }
     }
 }

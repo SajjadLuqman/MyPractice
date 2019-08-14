@@ -32,6 +32,11 @@ namespace MyProject.Core.Services
             return Send<T>(uri, HttpMethod.Post,input);
         }
 
+        public ApiResponse<T> PostToken<T>(string uri, object input = null) where T : class
+        {
+            return GetToken<T>(uri, HttpMethod.Post, input);
+        }
+
         private static ApiResponse<T> Send<T>(string uri, HttpMethod method, object input = null)
         {
             var request = new HttpRequestMessage(method, uri);
@@ -43,9 +48,16 @@ namespace MyProject.Core.Services
 
             var identity = HttpContext.Current.User.Identity as ClaimsIdentity;
             var accessToken = identity.Claims.Where(x => x.Type == Headers.BEARER_TOKEN).FirstOrDefault();
-            if(accessToken !=null )
+            if(accessToken != null)
             {
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer",accessToken.Value);
+                request.Headers.Add("lang", System.Threading.Thread.CurrentThread.CurrentUICulture.Name);
+            }
+
+            string accessTokenInSession = Convert.ToString(HttpContext.Current.Session["token"]);
+            if (!string.IsNullOrEmpty(accessTokenInSession))
+            {
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessTokenInSession);
                 request.Headers.Add("lang", System.Threading.Thread.CurrentThread.CurrentUICulture.Name);
             }
 
@@ -60,6 +72,50 @@ namespace MyProject.Core.Services
             else 
             {
                 if(typeof(T)==typeof(byte[]))
+                {
+                    apiResponse.Model = (T)(object)response.Content.ReadAsByteArrayAsync().Result;
+                }
+                else
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    apiResponse.Model = JsonConvert.DeserializeObject<T>(result);
+                }
+            }
+            return apiResponse;
+        }
+
+        private static ApiResponse<T> GetToken<T>(string uri, HttpMethod method, object input = null)
+        {
+            var request = new HttpRequestMessage(method, uri);
+            if (input != null)
+            {
+                var keyValues = new List<KeyValuePair<string, string>>();
+
+                var JSON = JsonConvert.SerializeObject(input);
+                var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(JSON);
+                foreach (var kv in dict)
+                {
+                    keyValues.Add(new KeyValuePair<string, string>(kv.Key, kv.Value));
+                }
+
+                keyValues.Add(new KeyValuePair<string, string>("grant_type", "password"));
+
+                request.Content = new FormUrlEncodedContent(keyValues);
+            }
+
+            request.Headers.Add("lang", System.Threading.Thread.CurrentThread.CurrentUICulture.Name);
+            request.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue("en"));
+
+            var response = _httpClient.SendAsync(request).Result;
+            var apiResponse = new ApiResponse<T>(response.StatusCode);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                apiResponse.Message = response.Content.ReadAsStringAsync().Result;
+            }
+            else
+            {
+                if (typeof(T) == typeof(byte[]))
                 {
                     apiResponse.Model = (T)(object)response.Content.ReadAsByteArrayAsync().Result;
                 }

@@ -10,21 +10,23 @@ namespace MyProject.WebPresentation.Controllers
     public class HomeController : Controller
     {
         private CommonService _repo;
+        private OrderService _order;
 
         public HomeController()
         {
             _repo = new CommonService();
+            _order = new OrderService();
         }
 
         public ActionResult Index()
         {
-            var allStudents = _repo.GetAllStudents();
-            var student = _repo.GetStudentById(5);
-            var Effect = _repo.DeleteStudentById(9);
-            var effectRow = _repo.UpdateStudents(new Models.Student() { StudentId = 10, Name = "Pakistan ii ii", Address = "Zindabauud" });
-            var PKID = _repo.AddStudents(new Models.Student() { Name = "Pakuuistan", Address = "Zindabahhhd" });
+            var allOrders = _order.GetAllOrders();
+            //var allStudents = _repo.GetAllStudents();
+            //var student = _repo.GetStudentById(5);
+            //var Effect = _repo.DeleteStudentById(9);
+            //var effectRow = _repo.UpdateStudents(new Models.Student() { StudentId = 10, Name = "Pakistan ii ii", Address = "Zindabauud" });
+            //var PKID = _repo.AddStudents(new Models.Student() { Name = "Pakuuistan", Address = "Zindabahhhd" });
             ViewBag.Title = "Home Page";
-
             return View();
         }
 
