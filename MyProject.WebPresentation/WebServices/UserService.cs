@@ -22,35 +22,70 @@ namespace MyProject.WebServices
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Users.GetUsersByUsersId, UserId);
             var Content = Get<Users>(URL);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return Content.Model;
+            }
+            else
+            {
+                return new Users() { ValidationMessage = new ValidationMessage() { ErrorMessage = Content.Message } };
+            }
         }
 
         public Token GetTokenLogin(Users user)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Users.getToken);
             var Content = PostToken<Token>(URL,new { username = user.UserName, password = user.Password});
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return Content.Model;
+            }
+            else
+            {
+                return new Token() { ValidationMessage = new ValidationMessage() { ErrorMessage = Content.Message } };
+            }
         }
 
-        public string DeleteUser(int UserId)
+        public ValidationMessage DeleteUser(int UserId)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Users.DeleteUsersByUsersId, UserId);
             var Content = Post<string>(URL);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return new ValidationMessage();
+            }
+            else
+            {
+                return new ValidationMessage() { ErrorMessage = Content.Message };
+            }
         }
 
-        public string UpdateUser(Users User)
+        public ValidationMessage UpdateUser(Users User)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Users.UpdateUsers);
             var Content = Post<string>(URL, User);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return new ValidationMessage();
+            }
+            else
+            {
+                return new ValidationMessage() { ErrorMessage = Content.Message };
+            }
         }
 
-        public string AddUser(Users User)
+        public ValidationMessage AddUser(Users User)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Users.InsertUsers);
             var Content = Post<string>(URL, User);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return new ValidationMessage();
+            }
+            else
+            {
+                return new ValidationMessage() { ErrorMessage = Content.Message };
+            }
         }
     }
 }

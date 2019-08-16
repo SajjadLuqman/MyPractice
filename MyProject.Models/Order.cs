@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyProject.Models
 {
-    public class Order
+    public class Order : BaseModel
     {
         public int? OrderId { get; set; }
 

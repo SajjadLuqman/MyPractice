@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyProject.Models
 {
-    public class Users
+    public class Users : BaseModel
     {
         public int UserId { get; set; }
 
@@ -19,7 +19,7 @@ namespace MyProject.Models
         public string Type { get; set; }
     }
 
-    public class Token
+    public class Token : BaseModel
     {
         public string access_token { get; set; }
         public string expires_in { get; set; }

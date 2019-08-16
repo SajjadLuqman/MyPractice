@@ -403,6 +403,7 @@
     <Content Include="Areas\AdminPanel\Views\Admin\Index.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Shipment\NewShipment.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Shipment\AllShipment.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Shipment\DeleteShipment.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

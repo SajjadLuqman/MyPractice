@@ -29,28 +29,56 @@ namespace MyProject.WebServices
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Tracking.GetTrackingByTrackingId, TrackingId);
             var Content = Get<Tracking>(URL);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return Content.Model;
+            }
+            else
+            {
+                return new Tracking() { ValidationMessage = new ValidationMessage() { ErrorMessage = Content.Message } };
+            }
         }
 
-        public string DeleteTracking(int TrackingId)
+        public ValidationMessage DeleteTracking(int TrackingId)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Tracking.DeleteTrackingByTrackingId, TrackingId);
             var Content = Post<string>(URL);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return new ValidationMessage();
+            }
+            else
+            {
+                return new ValidationMessage() { ErrorMessage = Content.Message };
+            }
         }
 
-        public string UpdateTracking(Tracking Tracking)
+        public ValidationMessage UpdateTracking(Tracking Tracking)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Tracking.UpdateTracking);
             var Content = Post<string>(URL, Tracking);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return new ValidationMessage();
+            }
+            else
+            {
+                return new ValidationMessage() { ErrorMessage = Content.Message };
+            }
         }
 
-        public string AddTracking(Tracking Tracking)
+        public ValidationMessage AddTracking(Tracking Tracking)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Tracking.InsertTracking);
             var Content = Post<string>(URL, Tracking);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return new ValidationMessage();
+            }
+            else
+            {
+                return new ValidationMessage() { ErrorMessage = Content.Message };
+            }
         }
     }
 }

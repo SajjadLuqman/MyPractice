@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MyProject.Models
 {
-   public class Tracking
+    public class Tracking : BaseModel
     {
-public int TrackingId { get; set; }
-public int OrderId { get; set; }
+        public int TrackingId { get; set; }
+        public int OrderId { get; set; }
         public string H_Date { get; set; }
         public string H_Time { get; set; }
         public string Status { get; set; }

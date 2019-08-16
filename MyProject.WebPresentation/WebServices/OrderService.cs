@@ -22,48 +22,55 @@ namespace MyProject.WebServices
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Order.GetOrderByOrderId, orderId);
             var Content = Get<Order>(URL);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return Content.Model;
+            }
+            else
+            {
+                return new Order() { ValidationMessage = new ValidationMessage() {  ErrorMessage = Content.Message } };
+            }
         }
 
-        public string DeleteOrder(int orderId)
+        public ValidationMessage DeleteOrder(int orderId)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Order.DeleteOrderByOrderId, orderId);
             var Content = Post<string>(URL);
             if (Content.IsSuccessful)
             {
-                return Content.Model;
+                return new ValidationMessage();
             }
             else
             {
-                return Content.Message;
+                return new ValidationMessage() { ErrorMessage = Content.Message };
             }
         }
 
-        public string UpdateOrder(Order order)
+        public ValidationMessage UpdateOrder(Order order)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Order.UpdateOrder);
             var Content = Post<string>(URL, order);
             if (Content.IsSuccessful)
             {
-                return Content.Model;
+                return new ValidationMessage();
             }
             else
             {
-                return Content.Message;
+                return new ValidationMessage() { ErrorMessage = Content.Message };
             }
         }
 
-        public string AddOrder(Order order)
+        public ValidationMessage AddOrder(Order order)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Order.InsertOrder);
             var Content = Post<string>(URL, order);
             if (Content.IsSuccessful)
             {
-                return Content.Model;
+                return new ValidationMessage();
             }
             else
             {
-                return Content.Message;
+                return new ValidationMessage() { ErrorMessage = Content.Message };
             }
         }
     }

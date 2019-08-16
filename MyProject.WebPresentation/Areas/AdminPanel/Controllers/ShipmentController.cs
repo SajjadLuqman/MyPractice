@@ -23,7 +23,15 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
             if (!string.IsNullOrEmpty(Id))
             {
                 var model = _orderService.GetOrderById(Convert.ToInt32(Id));
-                return View(model);
+                if (!model.ValidationMessage.HasError)
+                {
+                    return View(model);
+                }
+                else
+                {
+                    ViewBag.Message = "Error Occured, Please contact admin";
+                    return View();
+                }
             }
             else
             {
@@ -50,9 +58,7 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
 
             if (ModelState.IsValid)
             {
-               
-
-                var Result = string.Empty;
+                var Result = new ValidationMessage();
 
                 if (order.OrderId==0 || order.OrderId == null)
                 {
@@ -66,18 +72,17 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
                 {
                     order.ModifiedDate = DateTime.Now.ToString();
                     order.ModifiedBy= Session["userId"].ToString();
-
                     Result = _orderService.UpdateOrder(order);
                 }
 
-                if (Result == "1")
+                if (!Result.HasError)
                 {
                     ViewBag.Message = "Successfully Shipment Saved.";
                     ModelState.Clear();
                 }
                 else
                 {
-                   ModelState.AddModelError("ErrorOccurd!", Result);
+                   ModelState.AddModelError("ErrorOccurd!", Result.ErrorMessage);
                 }
             }
             return View();
@@ -91,6 +96,30 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
 
         public ActionResult DeleteShipment(string Id)
         {
+            var model = _orderService.GetOrderById(Convert.ToInt32(Id));
+            if (!model.ValidationMessage.HasError)
+            {
+                return View(model);
+            }
+            else
+            {
+                ViewBag.Message = "Error Occured, Please contact admin";
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteShipment(Order order)
+        {
+            var result = _orderService.DeleteOrder((int)order.OrderId);
+            if (!result.HasError)
+            {
+                ViewBag.Message = "Successfully Delete.";
+            }
+            else
+            {
+                ViewBag.Message = "Error Occured, Please contact admin";
+            }
             return View();
         }
     }
