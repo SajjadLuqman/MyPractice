@@ -7,111 +7,121 @@
 
 <ul class="nav nav-tabs">
     <li class="active"><a href="#home" data-toggle="tab">New Shipment</a></li>
-   
 </ul>
 
 <div class="row">
-    <div class="col-md-6">
-        <br>
-        <div id="myTabContent" class="tab-content">
-            <div class="tab-pane active in" id="home">
-                <div id="tab">
-                    <div class="form-group">
-                        <label>H. Airway Bill #</label>
-                        @Html.TextBoxFor(x => x.AirWayBillNumberNumber, new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        <label>Shipper</label>
-                        @Html.TextAreaFor(x => x.Shipper_SenderNameAddress, new { @class = "form-control", rows = "3" })
-                    </div>
-                    <div class="form-group">
-                        <label>Prot of Landing</label>
-                        @Html.TextBoxFor(x => x.PortOfLanding, new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        <label>MBL #</label>
-                        @Html.TextBoxFor(x => x.MBL_Container_Number, new { @class = "form-control" })
-                    </div>
+    @using (Html.BeginForm("NewShipment", "Shipment"))
+    {
+        @Html.HiddenFor(x=>x.OrderId)
+        <div class="col-md-6">
+            <br>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active in" id="home">
+                    <div id="tab">
+                        <div class="form-group">
+                            <label>H. Airway Bill #</label>
+                            @Html.TextBoxFor(x => x.AirWayBillNumberNumber, new { @class = "form-control", MaxLength="50" , autocomplete = "off"})
+                        </div>
+                        <div class="form-group">
+                            <label>Shipper</label>
+                            @Html.TextBoxFor(x => x.Shipper_SenderNameAddress, new { @class = "form-control", MaxLength="50", autocomplete = "off"})
+                        </div>
+                        <div class="form-group">
+                            <label>Prot of Landing</label>
+                            @Html.TextBoxFor(x => x.PortOfLanding, new { @class = "form-control", MaxLength="50" , autocomplete = "off"})
+                        </div>
+                        <div class="form-group">
+                            <label>MBL #</label>
+                            @Html.TextBoxFor(x => x.MBL_Container_Number, new { @class = "form-control" , MaxLength="20", autocomplete = "off"})
+                        </div>
 
-                    <div class="form-group">
-                        <label>Carrier</label>
-                        @Html.TextBoxFor(x => x.Carrier, new { @class = "form-control" })
-                    </div>
+                        <div class="form-group">
+                            <label>Carrier</label>
+                            @Html.TextBoxFor(x => x.Carrier, new { @class = "form-control", MaxLength="50" , autocomplete = "off"})
+                        </div>
 
 
-                    <div class="form-group">
-                        <label>No of Equipments</label>
-                        @Html.TextBoxFor(x => x.NumberOfEquipments, new { @class = "form-control" })
-                    </div>
+                        <div class="form-group">
+                            <label>No of Equipments</label>
+                            @Html.TextBoxFor(x => x.NumberOfEquipments, new { @class = "form-control" , MaxLength="50", autocomplete = "off"})
+                        </div>
 
-                    <div class="form-group">
-                        <label>Commodity</label>
-                        @Html.TextBoxFor(x => x.Commodity, new { @class = "form-control" })
-                    </div>
+                        <div class="form-group">
+                            <label>Commodity</label>
+                            @Html.TextBoxFor(x => x.Commodity, new { @class = "form-control", MaxLength="50" , autocomplete = "off"})
+                        </div>
 
-                    <div class="form-group">
-                        <label>Weight</label>
-                        @Html.TextBoxFor(x => x.Weight, new { @class = "form-control" })
-                    </div>
+                        <div class="form-group">
+                            <label>Weight</label>
+                            @Html.TextBoxFor(x => x.Weight, new { @class = "form-control" , MaxLength="50", autocomplete = "off"})
+                        </div>
 
-                    <div class="form-group">
-                        <label>Volume</label>
-                        @Html.TextBoxFor(x => x.Volume, new { @class = "form-control" })
-                    </div>
+                        <div class="form-group">
+                            <label>Volume</label>
+                            @Html.TextBoxFor(x => x.Volume, new { @class = "form-control" , MaxLength="50", autocomplete = "off"})
+                        </div>
 
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <br>
-        <div id="myTabContent" class="tab-content">
-            <div class="tab-pane active in" id="home">
-                <div id="tab">
-
-                    <div class="form-group">
-                        <label>Consignee</label>
-                        @Html.TextAreaFor(x => x.Consignee_ReceiverNameAddress, new { @class = "form-control", rows = "3" })
-                    </div>
-
-                    <div class="form-group">
-                        <label>Prot of Deliver</label>
-                        @Html.TextBoxFor(x => x.ProtOfDeliver, new { @class = "form-control" })
-                    </div>
-
-                    <div class="form-group">
-                        <label>AWB # (Air Way Bill)</label>
-                        @Html.TextBoxFor(x => x.AWB_Number_AirWayBill, new { @class = "form-control" })
-                    </div>
-
-                    <div class="form-group">
-                        <label>Vessel Name & VOY</label>
-                        @Html.TextBoxFor(x => x.VesselNameAndVOY, new { @class = "form-control" })
-                    </div>
-
-                    <div class="form-group">
-                        <label>COD</label>
-                        @Html.TextBoxFor(x => x.COD, new { @class = "form-control" })
-                    </div>
-
-                    <div class="form-group">
-                        <label>ETD</label>
-                        @Html.TextBoxFor(x => x.ETD, new { @class = "form-control" })
-                    </div>
-
-                    <div class="form-group">
-                        <label>ETA</label>
-                        @Html.TextBoxFor(x => x.ETA, new { @class = "form-control" })
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <br>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active in" id="home">
+                    <div id="tab">
 
-        <div class="btn-toolbar list-toolbar">
-            <button class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-            <a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a>
+                        <div class="form-group">
+                            <label>Consignee</label>
+                            @Html.TextBoxFor(x => x.Consignee_ReceiverNameAddress, new { @class = "form-control", MaxLength = "50", autocomplete = "off" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Prot of Deliver</label>
+                            @Html.TextBoxFor(x => x.ProtOfDeliver, new { @class = "form-control", MaxLength = "50", autocomplete = "off" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>AWB # (Air Way Bill)</label>
+                            @Html.TextBoxFor(x => x.AWB_Number_AirWayBill, new { @class = "form-control", MaxLength = "20", autocomplete = "off" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Vessel Name & VOY</label>
+                            @Html.TextBoxFor(x => x.VesselNameAndVOY, new { @class = "form-control", MaxLength = "50", autocomplete = "off" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>COD</label>
+                            @Html.TextBoxFor(x => x.COD, new { @class = "form-control txtDate", MaxLength = "10", autocomplete = "off" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>ETD</label>
+                            @Html.TextBoxFor(x => x.ETD, new { @class = "form-control txtDate", MaxLength = "10", autocomplete = "off" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>ETA</label>
+                            @Html.TextBoxFor(x => x.ETA, new { @class = "form-control txtDate", MaxLength = "10", autocomplete = "off" })
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="btn-toolbar list-toolbar">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save </button>
+            </div>
+            <div class="modal-body">
+                <p class="error-text">@ViewBag.Message</p>
+            </div>
+            @Html.ValidationSummary(false, "")
+
         </div>
-    </div>
+    }
 </div>
 
 

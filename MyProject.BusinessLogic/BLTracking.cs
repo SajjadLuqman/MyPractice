@@ -21,6 +21,12 @@ namespace MyProject.BusinessLogic
         {
             return _repo.Get();
         }
+
+        public List<Tracking> GetByOrderId(string OrderId)
+        {
+            return _repo.GetByOrderId(OrderId);
+        }
+
         public Tracking GetById(string TrackingId)
         {
             return _repo.GetById(TrackingId);

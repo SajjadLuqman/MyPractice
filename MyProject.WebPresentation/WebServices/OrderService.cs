@@ -21,7 +21,7 @@ namespace MyProject.WebServices
         public Order GetOrderById(int orderId)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Order.GetOrderByOrderId, orderId);
-            var Content = Post<Order>(URL);
+            var Content = Get<Order>(URL);
             return Content.Model;
         }
 
@@ -29,21 +29,42 @@ namespace MyProject.WebServices
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Order.DeleteOrderByOrderId, orderId);
             var Content = Post<string>(URL);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return Content.Model;
+            }
+            else
+            {
+                return Content.Message;
+            }
         }
 
         public string UpdateOrder(Order order)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Order.UpdateOrder);
             var Content = Post<string>(URL, order);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return Content.Model;
+            }
+            else
+            {
+                return Content.Message;
+            }
         }
 
         public string AddOrder(Order order)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Order.InsertOrder);
             var Content = Post<string>(URL, order);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return Content.Model;
+            }
+            else
+            {
+                return Content.Message;
+            }
         }
     }
 }

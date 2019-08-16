@@ -32,7 +32,10 @@ namespace MyProject.WebPresentation.Controllers
                 if (result != null && !string.IsNullOrEmpty(result.access_token))
                 {
                     ControllerContext.HttpContext.Session["token"] = result.access_token;
-                    return RedirectToAction("","");
+                    ControllerContext.HttpContext.Session["userId"] = _userRepo.GetAllUsers().Where(x=>x.UserName == users.UserName && x.Password== users.Password).FirstOrDefault().UserId;
+                    ControllerContext.HttpContext.Session["userName"] = users.UserName ;
+                    ControllerContext.HttpContext.Session["token"] = result.access_token;
+                    return RedirectToAction("Index", "Admin", new { area = "AdminPanel" });
                 }
                 else
                 {

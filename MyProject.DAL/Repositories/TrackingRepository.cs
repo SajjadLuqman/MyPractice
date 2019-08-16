@@ -16,7 +16,11 @@ namespace MyProject.DAL.Repositories
         }
         public Tracking GetById(string TrackingId)
         {
-            return QueryExecutor.Query<Tracking>(StoreProcedures.spOrderTrackingShow.ToString(), new { TrackingId }, CommandType.StoredProcedure).ToList().FirstOrDefault();
+            return QueryExecutor.Query<Tracking>(StoreProcedures.spOrderTrackingByTrackId.ToString(), new { TrackingId }, CommandType.StoredProcedure).ToList().FirstOrDefault();
+        }
+        public List<Tracking> GetByOrderId(string OrderId)
+        {
+            return QueryExecutor.Query<Tracking>(StoreProcedures.spOrderTrackingByOrderId.ToString(), new { OrderId }, CommandType.StoredProcedure).ToList();
         }
         public int DeleteById(int TrackingId)
         {

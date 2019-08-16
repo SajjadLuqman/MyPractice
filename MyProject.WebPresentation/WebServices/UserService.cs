@@ -21,7 +21,7 @@ namespace MyProject.WebServices
         public Users GetUserById(int UserId)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Users.GetUsersByUsersId, UserId);
-            var Content = Post<Users>(URL);
+            var Content = Get<Users>(URL);
             return Content.Model;
         }
 

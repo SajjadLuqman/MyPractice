@@ -18,10 +18,17 @@ namespace MyProject.WebServices
             return Content.Model;
         }
 
+        public List<Tracking> GetTrackingByOrderId()
+        {
+            var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Tracking.GetTrackingByOrderId);
+            var Content = Get<List<Tracking>>(URL);
+            return Content.Model;
+        }
+
         public Tracking GetTrackingById(int TrackingId)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Tracking.GetTrackingByTrackingId, TrackingId);
-            var Content = Post<Tracking>(URL);
+            var Content = Get<Tracking>(URL);
             return Content.Model;
         }
 

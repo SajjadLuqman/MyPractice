@@ -27,6 +27,14 @@ namespace MyProject.WebApiServices.Controllers
         }
 
         [Authorize]
+        [Route(URLs.Tracking.GetTrackingByOrderId)]
+        [HttpGet]
+        public IHttpActionResult GetTrackingByOrderId(string OrderId)
+        {
+            return Ok(_repo.GetByOrderId(OrderId));
+        }
+
+        [Authorize]
         [Route(URLs.Tracking.GetTrackingByTrackingId)]
         [HttpGet]
         public IHttpActionResult GetById(string TrackingId)
@@ -35,7 +43,7 @@ namespace MyProject.WebApiServices.Controllers
         }
 
         [Authorize]
-        [Route(URLs.Tracking.GetTrackingByTrackingId)]
+        [Route(URLs.Tracking.DeleteTrackingByTrackingId)]
         [HttpPost]
         public IHttpActionResult DeleteById(int TrackingId)
         {

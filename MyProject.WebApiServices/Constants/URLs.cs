@@ -31,6 +31,7 @@ namespace MyProject.WebApiServices.Constants
         {
             public const string GetTracking = "~/api/Tracking/GetTracking";
             public const string GetTrackingByTrackingId = "~/api/Tracking/GetTrackingByTrackingId/{TrackingId}";
+            public const string GetTrackingByOrderId = "~/api/Tracking/GetTrackingByOrderId/{OrderId}";
             public const string DeleteTrackingByTrackingId = "~/api/Tracking/DeleteTrackingByTrackingId/{TrackingId}";
             public const string UpdateTracking = "~/api/Tracking/UpdateTracking";
             public const string InsertTracking = "~/api/Tracking/InsertTracking";

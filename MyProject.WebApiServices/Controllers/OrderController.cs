@@ -35,7 +35,7 @@ namespace MyProject.WebApiServices.Controllers
         }
 
         [Authorize]
-        [Route(URLs.Order.GetOrderByOrderId)]
+        [Route(URLs.Order.DeleteOrderByOrderId)]
         [HttpPost]
         public IHttpActionResult DeleteById(int OrderId)
         {
