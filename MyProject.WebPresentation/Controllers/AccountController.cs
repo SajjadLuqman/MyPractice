@@ -20,6 +20,10 @@ namespace MyProject.WebPresentation.Controllers
         // GET: Account
         public ActionResult Login()
         {
+            ControllerContext.HttpContext.Session["token"] = null;
+            ControllerContext.HttpContext.Session["userId"] = null;
+            ControllerContext.HttpContext.Session["userName"] = null;
+            ControllerContext.HttpContext.Session["token"] = null;
             return View();
         }
 

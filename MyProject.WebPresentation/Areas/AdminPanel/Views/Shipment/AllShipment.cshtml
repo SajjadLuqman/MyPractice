@@ -1,40 +1,43 @@
-﻿@model List<MyProject.Models.Order>
+﻿@model MyProject.WebPresentation.Models.TrackingOrderViewModel
 
 @{
     ViewBag.Title = "AllShipment";
     Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
 }
 
-@*<div class="panel panel-default">
-        <a href="#page-stats" class="panel-heading collapsed" data-toggle="collapse">Search</a>
-        <div id="page-stats" class="panel-collapse panel-body collapse">
-            <div class="row">
+<div class="header">
+    <div class="stats">
+        <p class="stat"><span class="label label-info">5</span> In Process</p>
+        <p class="stat"><span class="label label-success">27</span> Delivered</p>
+        <p class="stat"><span class="label label-danger">15</span> In Way</p>
+    </div>
 
-                <div class="btn-toolbar list-toolbar">
+    <h1 class="page-title">Shipments</h1>
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a> </li>
+        <li class="active">All Shipments</li>
+    </ul>
+</div>
 
-                    <table style=" margin: 0 auto;">
-                        <tr>
-                            <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Product.Code, new { @placeholder = "Site Code", @class = "form-control" })</div></td>
-                            <td style="padding: 2px;"><div class="form-group">@Html.DropDownListFor(x => x.Product.Size, Model.Product.listSizes, "Select Size", new { @class = "form-control" })</div></td>
-                            <td style="padding: 2px;"><div class="form-group">@Html.DropDownListFor(x => x.Product.Category, Model.Product.listCategories, "Select Category", new { @class = "form-control" })</div></td>
-                            <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Product.Area, new { @placeholder = "Area", @class = "form-control" })</div></td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Product.Rent, new { @placeholder = "Rent", @class = "form-control" })</div></td>
-                            <td style="padding: 2px;"><div class="form-group">@Html.DropDownListFor(x => x.Product.StatusId, Model.Product.listStatus, "Select Status", new { @class = "form-control" })</div></td>
-                            <td style="padding: 2px;"><div class="form-group">@Html.DropDownListFor(x => x.Product.CityId, Model.Product.listCity, "Select City", new { @class = "form-control" })</div></td>
-                            <td style="padding: 2px;"><div class="form-group">@Html.DropDownListFor(x => x.Product.AssetCategory, Model.Product.listAssetCategory, "Select Asset Category", new { @class = "form-control" })</div></td>
-                            <td style="padding: 2px;"><div class="form-group"><button class="btn btn-primary" style="height: 32px;margin-right: 25px;" type="submit" onclick="SearchAll();">Search</button></div></td>
-                        </tr>
-                    </table>
-                    <div class="btn-group">
-                    </div>
+<div class="panel panel-default">
+    <a href="#page-stats" class="panel-heading collapsed" data-toggle="collapse">Search</a>
+    <div id="page-stats" class="panel-collapse panel-body collapse">
+        <div class="row">
+            <div class="btn-toolbar list-toolbar">
+
+                <table style=" margin: 0 auto;">
+                    <tr>
+                        <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Order.AirWayBillNumberNumber, new { @placeholder = "Air Way Bill Number", @class = "form-control" })</div></td>
+                        <td style="padding: 2px;"><div class="form-group"><button class="btn btn-primary" style="height: 32px;margin-right: 25px;" type="submit">Search</button></div></td>
+                    </tr>
+                </table>
+                <div class="btn-group">
                 </div>
-
-
             </div>
+
         </div>
-    </div>*@
+    </div>
+</div>
 
 <div style="
          text-align: right;
@@ -46,11 +49,11 @@
 <table class="table">
     <thead>
         <tr>
-            <th>H. Airway Bill #</th>
-            <th>Shipper</th>
-            <th>Consignee</th>
-            <th>Port Of Landing</th>
-            <th>Port Of Deliver</th>
+            <th width="10%">H. Airway Bill #</th>
+            <th width="15%">Shipper</th>
+            <th width="15%">Consignee</th>
+            <th width="10%">Port Of Landing</th>
+            <th width="10%">Port Of Deliver</th>
             <th>COD</th>
             <th>ETA </th>
             <th>ETD</th>
@@ -60,7 +63,7 @@
     </thead>
     <tbody>
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Orders)
         {
 
             <tr>
@@ -75,8 +78,9 @@
                 <td style="font-size: 11px">@item.CurrentStatus</td>
 
                 <td>
-                    <a href="/AdminPanel/Shipment/NewShipment/@item.OrderId"><i class="fa fa-pencil"></i></a>
-                    <a data-toggle="modal" href="/AdminPanel/Shipment/DeleteShipment/@item.OrderId" role="button"><i class="fa fa-trash-o"></i></a>
+                    <a href="/AdminPanel/Tracking/AddTrackHistory/@item.OrderId"><i class="fa fa-history  fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                    <a href="/AdminPanel/Shipment/NewShipment/@item.OrderId"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                    <a data-toggle="modal" href="/AdminPanel/Shipment/DeleteShipment/@item.OrderId" role="button"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
                 </td>
             </tr>
         }
@@ -88,11 +92,11 @@
 </p>
 
 @*<ul class="pagination">
-    <li><a href="#" onclick="SearchWithPageing(1)">&laquo;</a></li>
-    @for (int i = 1; i <= Model.TotalPages; i++)
-    {
-        <li><a href="#" onclick="SearchWithPageing(@i);">@i</a></li>
-    }
-    <li><a href="#" onclick="SearchWithPageing(@Model.TotalPages);">&raquo;</a></li>
-</ul>*@
+        <li><a href="#" onclick="SearchWithPageing(1)">&laquo;</a></li>
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li><a href="#" onclick="SearchWithPageing(@i);">@i</a></li>
+        }
+        <li><a href="#" onclick="SearchWithPageing(@Model.TotalPages);">&raquo;</a></li>
+    </ul>*@
 

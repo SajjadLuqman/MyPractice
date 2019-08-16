@@ -68,7 +68,7 @@
                     </a>
 
                     <ul class="dropdown-menu">
-                        <li><a tabindex="-1" href="#">Logout</a></li>
+                        <li><a tabindex="-1" href="~/Account/Login">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -86,8 +86,6 @@
                     <li><a href="/AdminPanel/Admin/Index"><span class="fa fa-caret-right"></span> Main Page</a></li>
                     <li><a href="/AdminPanel/Shipment/AllShipment"><span class="fa fa-caret-right"></span> All Shipments</a></li>
                     <li><a href="/AdminPanel/Shipment/NewShipment"><span class="fa fa-caret-right"></span> New Shipment</a></li>
-                    <li><a href="users.html"><span class="fa fa-caret-right"></span> View, Update Tracking Status</a></li>
-                    <li><a href="user.html"><span class="fa fa-caret-right"></span> List All Tracking Numbers</a></li>
                 </ul>
             </li>
 
@@ -104,20 +102,7 @@
     </div>
 
     <div class="content">
-        <div class="header">
-            <div class="stats">
-                <p class="stat"><span class="label label-info">5</span> In Process</p>
-                <p class="stat"><span class="label label-success">27</span> Delivered</p>
-                <p class="stat"><span class="label label-danger">15</span> In Way</p>
-            </div>
-
-            <h1 class="page-title">Dashboard</h1>
-            <ul class="breadcrumb">
-                <li><a href="index.html">Home</a> </li>
-                <li class="active">Dashboard</li>
-            </ul>
-
-        </div>
+        
         <div class="main-content">
 
             @RenderBody()

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MyProject.Models;
+using MyProject.WebPresentation.Models;
 using MyProject.WebServices;
 
 namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
@@ -91,6 +92,11 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
         public ActionResult AllShipment()
         {
             var Model = _orderService.GetAllOrders();
+            if (Model.ValidationMessage.HasError)
+            {
+                ViewBag.Message = "Error Occured, Please contact admin";
+                return View(new TrackingOrderViewModel() {  Orders = new List<Order>() });
+            }
             return View(Model);
         }
 

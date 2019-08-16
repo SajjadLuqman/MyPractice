@@ -6,23 +6,38 @@ using System.Web;
 using MyProject.Models;
 using MyProject.Core.Helpers;
 using MyProject.Core.Constants;
+using MyProject.WebPresentation.Models;
 
 namespace MyProject.WebServices
 {
     public class TrackingService : HttpClientService
     {
-        public List<Tracking> GetAllTrackings()
+        public TrackingOrderViewModel GetAllTrackings()
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Tracking.GetTracking);
             var Content = Get<List<Tracking>>(URL);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return new TrackingOrderViewModel() { TrackingList = Content.Model };
+            }
+            else
+            {
+                return new TrackingOrderViewModel() { ValidationMessage = new ValidationMessage() { ErrorMessage = Content.Message } };
+            }
         }
 
-        public List<Tracking> GetTrackingByOrderId()
+        public TrackingOrderViewModel GetTrackingByOrderId()
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Tracking.GetTrackingByOrderId);
             var Content = Get<List<Tracking>>(URL);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return new TrackingOrderViewModel() { TrackingList = Content.Model };
+            }
+            else
+            {
+                return new TrackingOrderViewModel() { ValidationMessage = new ValidationMessage() { ErrorMessage = Content.Message } };
+            }
         }
 
         public Tracking GetTrackingById(int TrackingId)

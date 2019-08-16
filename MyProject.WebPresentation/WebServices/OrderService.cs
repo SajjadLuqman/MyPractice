@@ -6,16 +6,24 @@ using System.Web;
 using MyProject.Models;
 using MyProject.Core.Helpers;
 using MyProject.Core.Constants;
+using MyProject.WebPresentation.Models;
 
 namespace MyProject.WebServices
 {
     public class OrderService : HttpClientService
     {
-        public List<Order> GetAllOrders()
+        public TrackingOrderViewModel GetAllOrders()
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Order.GetOrder);
             var Content = Get<List<Order>>(URL);
-            return Content.Model;
+            if (Content.IsSuccessful)
+            {
+                return new TrackingOrderViewModel() { Orders = Content.Model };
+            }
+            else
+            {
+                return new TrackingOrderViewModel() { ValidationMessage = new ValidationMessage() {  ErrorMessage = Content.Message } };
+            }
         }
 
         public Order GetOrderById(int orderId)
