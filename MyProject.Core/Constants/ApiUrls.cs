@@ -22,6 +22,7 @@ namespace MyProject.Core.Constants
         {
             public const string GetOrder = "/api/order/GetOrder";
             public const string GetOrderByOrderId = "/api/order/GetOrderByOrderId/{0}";
+            public const string GetByAirWayBillNumberNumber = "/api/order/GetByAirWayBillNumberNumber/{0}";
             public const string DeleteOrderByOrderId = "/api/order/DeleteOrderByOrderId/{0}";
             public const string UpdateOrder = "/api/order/UpdateOrder";
             public const string InsertOrder = "/api/order/InsertOrder";
@@ -31,7 +32,7 @@ namespace MyProject.Core.Constants
         {
             public const string GetTracking = "/api/Tracking/GetTracking";
             public const string GetTrackingByTrackingId = "/api/Tracking/GetTrackingByTrackingId/{0}";
-            public const string GetTrackingByOrderId = "~/api/Tracking/GetTrackingByOrderId/{0}";
+            public const string GetTrackingByOrderId = "/api/Tracking/GetTrackingByOrderId/{0}";
             public const string DeleteTrackingByTrackingId = "/api/Tracking/DeleteTrackingByTrackingId/{0}";
             public const string UpdateTracking = "/api/Tracking/UpdateTracking";
             public const string InsertTracking = "/api/Tracking/InsertTracking";

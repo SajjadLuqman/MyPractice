@@ -14,10 +14,17 @@ namespace MyProject.DAL.Repositories
         {
             return QueryExecutor.Query<Order>(StoreProcedures.spOrderShow.ToString(), null, CommandType.StoredProcedure).ToList();
         }
-        public Order GetById(string OrderId)
+
+        public Order GetById(int OrderId)
         {
             return QueryExecutor.Query<Order>(StoreProcedures.spOrderById.ToString(), new { OrderId }, CommandType.StoredProcedure).ToList().FirstOrDefault();
         }
+
+        public Order GetByAirWayBillNumberNumber(string airWayBillNumberNumber)
+        {
+            return QueryExecutor.Query<Order>(StoreProcedures.spOrderByAirWayBillNumberNumber.ToString(), new { airWayBillNumberNumber }, CommandType.StoredProcedure).ToList().FirstOrDefault();
+        }
+
         public int DeleteById(int OrderId)
         {
             return QueryExecutor.Execute(StoreProcedures.spOrderDelete.ToString(), new { OrderId }, CommandType.StoredProcedure);

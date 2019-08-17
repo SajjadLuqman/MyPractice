@@ -5,37 +5,221 @@
     Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
 }
 
-
-
 <div class="header">
-    <h1 class="page-title">Shipment Detail</h1>
+    <h1 class="page-title">Tracking History</h1>
+    <ul class="breadcrumb">
+        <li><a href="~/Home/Dashboard">Home</a> </li>
+        <li><a href="#">Shipment Detail</a> </li>
+    </ul>
 </div>
-
+<div id="lblResult" style="
+         text-align: right;
+         color: green;
+         font-size: larger;">
+    @ViewBag.Message
+</div>
 <div class="main-content">
-        @Html.HiddenFor(x => x.Order.OrderId)
-        <div class="row">
-            <div class="col-md-6">
-                <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane active in" id="home">
-                        <div id="tab">
-                            <div class="form-group">
-                                H. Airway Bill #:  @Html.DisplayFor(x => x.Order.AirWayBillNumberNumber)
-                            </div>
+    @Html.HiddenFor(x => x.Order.OrderId,new { @class="txtOrderId"})
+    <div class="card">
+        <div class="card-header">
+            H. Airway Bill #:
+            <strong>  @Html.DisplayFor(x => x.Order.AirWayBillNumberNumber) </strong>
+            &nbsp; &nbsp; &nbsp; Created Date:
+            <strong> @Convert.ToDateTime(Model.Order.CreateDate).ToString("dd/MM/yyyy")</strong>
+            <span style="float: right;">
+                <strong>Order Id:</strong> @Model.Order.OrderId
+            </span>
+        </div>
+        <div class="card-body">
+            <div class="row mb-4">
 
-                            <div class="form-group">
-                                Shipper:  @Html.DisplayFor(x => x.Order.Shipper_SenderNameAddress)
-                            </div>
+                <div class="col-sm-6" style="margin-left:20px;">
+                    <h6 class="mb-3">Shipper:</h6>
+                    <div>Name & Address:  <strong>  @Model.Order.Shipper_SenderNameAddress</strong> </div>
+                    <div>Port of Landing:  <strong>@Model.Order.PortOfLanding</strong> </div>
+                    <div>MBL #: <strong>@Model.Order.MBL_Container_Number</strong> </div>
+                    <div>Carrier:  <strong>@Model.Order.Carrier</strong>  </div>
+                    <div>No of Equipments:  <strong>@Model.Order.NumberOfEquipments</strong>  </div>
+                    <div>Commodity:  <strong>@Model.Order.Commodity</strong>  </div>
+                    <div>Weight:  <strong>@Model.Order.Weight</strong>  </div>
+                    <div>Volume:  <strong>@Model.Order.Volume</strong>  </div>
+                </div>
 
+                <div class="col-sm-5">
+                    <h6 class="mb-3">Shipper:</h6>
+                    <div> Name & Address:   <strong>@Model.Order.Consignee_ReceiverNameAddress</strong> </div>
+                    <div> Port Of Deliver:  <strong>@Model.Order.ProtOfDeliver</strong></div>
+                    <div>Vessel Name & VOY:  <strong>@Model.Order.VesselNameAndVOY</strong> </div>
+                    <div>COD:  <strong>@Model.Order.COD</strong> </div>
+                    <div>ETD:  <strong>@Model.Order.ETD</strong> </div>
+                    <div>ETA:  <strong>@Model.Order.ETA</strong> </div>
+                </div>
+            </div>
+            <br />
 
-                            <div class="form-group">
-                                Consignee:  @Html.DisplayFor(x => x.Order.Consignee_ReceiverNameAddress)
+            <div class="panel panel-default">
+                <a href="#page-stats" class="panel-heading collapsed" data-toggle="collapse">Add Track</a>
+                <div id="page-stats" class="panel-collapse panel-body collapse">
+                    <div class="row">
+                        <div class="btn-toolbar list-toolbar">
+
+                            <table style=" margin: 0 auto;">
+                                <tr>
+                                    <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Tracking.H_Date, new { @placeholder = "Date", @class = "form-control txtDate" , @readonly="readonly" })</div></td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                                                <input type="text" class="form-control txtTime" value="@DateTime.Now.ToString("HH:mm")"  readonly="readonly">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Tracking.Location, new { @placeholder = "Location", @class = "form-control txtLocation" })</div></td>
+                                    <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Tracking.Link, new { @placeholder = "Link", @class = "form-control txtLink" })</div></td>
+                                    <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Tracking.Status, new { @placeholder = "Status", @class = "form-control txtStatus" })</div></td>
+                                    <td style="padding: 2px;"><div class="form-group"><button id="btnAdd" class="btn btn-primary" style="height: 32px;margin-right: 25px;" type="submit">Add </button></div></td>
+                                </tr>
+                            </table>
+                            <div class="btn-group">
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
+
+            <div class="table-responsive-sm">
+                <table class="table table-striped" id="tblTrackHistory">
+                    <thead>
+                        <tr>
+                            <th class="center">Date</th>
+                            <th class="center">Time</th>
+                            <th class="center">Location</th>
+                            <th class="center">Status</th>
+                            <th class="right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.TrackingList != null)
+                        {
+                            foreach (var item in Model.TrackingList)
+                            {
+                        <tr>
+                            <td class="center">@item.H_Date</td>
+                            <td class="center">@item.H_Time</td>
+                            <td class="center">@item.Location</td>
+                            @if (!string.IsNullOrEmpty(item.Link) && item.Link.Contains("http") && (item.Link.ToUpper().Contains("WWWW") || item.Link.ToUpper().Contains("COM")))
+                            {
+                                <td class="center">   <a href='@item.Link' target="_blank">@item.Status</a> </td>
+                            }
+                            else
+                            {
+                                <td class="center">   @item.Status </td>
+                            }
+                            <td class="right"><a data-toggle="modal" href="#" role="button" class="ForRemove" data-TrackingId="@item.TrackingId"><i class="fa fa-trash-o  fa-2x"></i></a></td>
+                        </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
         </div>
+    </div>
 </div>
 
+<style>
+    .card-header {
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 0;
+        background-color: rgba(0, 0, 0, 0.03);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    }
+
+    .card {
+        /* position: relative; */
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        /* min-width: 0; */
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 0.25rem;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(document).on("click","#btnAdd",function (e) {
+            var Table = $("#tblTrackHistory tbody tr:last");
+            var EmptyTable = $("#tblTrackHistory tbody");
+
+            var URL = "/AdminPanel/Tracking/AddTrack";
+            var txtDate = $(".txtDate").val();
+            var txtTime = $(".txtTime").val();
+            var txtLocation = $(".txtLocation").val();
+            var txtLink = $(".txtLink").val();
+            var txtStatus = $(".txtStatus").val();
+            
+            var txtOrderId = $(".txtOrderId").val();
+
+            if (txtDate == null || txtDate == "" || txtTime == null || txtTime == "" || txtLocation == null || txtLocation == "" || txtOrderId == null || txtOrderId == "" || txtStatus == null || txtStatus == "")
+                return;
+
+            var model = { H_Date: txtDate, H_Time: txtTime, Location: txtLocation, Link: txtLink, OrderId: txtOrderId, Status : txtStatus  };
+
+            $.post(URL, model, function (res) {
+                if (Table.length == 0) {
+                    EmptyTable.append(res);
+                }
+                else {
+                    Table.after(res);
+                }
+
+                $(".txtDate").val("");
+                $(".txtLocation").val("");
+                $(".txtLink").val("");
+                $(".txtStatus").val("");
+
+            }).fail(function (response) {
+                $("#lblResult").val("Error Occured, Please contact admin");
+                console.log(response);
+            });
+        });
+
+         $(document).on("click",".ForRemove", function (e) {
+
+            if (!confirm("Are You Sure Want To Delete?")) {
+                return;
+            }
+
+            var thisRow = $(this).parent().parent();
+             var URL = "/AdminPanel/Tracking/RemoveTrack";
+
+             var TrackingId = $(this).attr("data-TrackingId");
+
+            if (TrackingId == null || TrackingId == "")
+                 return;
 
 
+            var model = { trackingId: TrackingId };
+
+             $.post(URL, model, function (res) {
+                 if (res.success) {
+                     thisRow.remove();
+                 }
+                 else {
+                          $("#lblResult").val("Error Occured, Please contact admin");
+                 }
+            }).fail(function (response) {
+                $("#lblResult").val("Error Occured, Please contact admin");
+                console.log(response);
+            });
+        });
+
+    })
+</script>

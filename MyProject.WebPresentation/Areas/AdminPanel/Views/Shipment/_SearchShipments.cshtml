@@ -1,0 +1,28 @@
+﻿@model List<MyProject.Models.Order>
+
+@{
+    Layout = null;
+}
+
+
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td style="font-size: 11px">@item.AirWayBillNumberNumber</td>
+        <td style="font-size: 11px">@item.Shipper_SenderNameAddress</td>
+        <td style="font-size: 11px">@item.Consignee_ReceiverNameAddress</td>
+        <td style="font-size: 11px">@item.PortOfLanding</td>
+        <td style="font-size: 11px">@item.ProtOfDeliver</td>
+        <td style="font-size: 11px">@item.COD</td>
+        <td style="font-size: 11px">@item.ETA</td>
+        <td style="font-size: 11px">@item.ETD</td>
+        <td style="font-size: 11px">@item.CurrentStatus</td>
+
+        <td>
+            <a href="/AdminPanel/Tracking/AddTrackHistory/@item.OrderId"><i class="fa fa-history  fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;
+            <a href="/AdminPanel/Shipment/NewShipment/@item.OrderId"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;
+            <a data-toggle="modal" href="/AdminPanel/Shipment/DeleteShipment/@item.OrderId" role="button"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
+        </td>
+    </tr>
+}

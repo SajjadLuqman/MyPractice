@@ -21,10 +21,16 @@ namespace MyProject.BusinessLogic
         {
             return _repo.Get();
         }
-        public Order GetById(string OrderId)
+        public Order GetById(int OrderId)
         {
             return _repo.GetById(OrderId);
         }
+
+        public Order GetByAirWayBillNumberNumber(string airWayBillNumberNumber)
+        {
+            return _repo.GetByAirWayBillNumberNumber(airWayBillNumberNumber);
+        }
+
         public int DeleteById(int OrderId)
         {
             return _repo.DeleteById(OrderId);

@@ -407,6 +407,8 @@
     <Content Include="Areas\AdminPanel\Views\Shipment\AllShipment.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Shipment\DeleteShipment.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Tracking\AddTrackHistory.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Shipment\_SearchShipments.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Tracking\_Track.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -29,6 +29,7 @@ namespace MyProject.DAL.Constants
         spOrderTrackingByOrderId,
         spOrderTrackingByTrackId,
         spOrderById,
-        spShowUserById
+        spShowUserById,
+        spOrderByAirWayBillNumberNumber
     }
 }

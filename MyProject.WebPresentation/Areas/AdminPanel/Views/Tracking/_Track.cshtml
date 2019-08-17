@@ -1,0 +1,20 @@
+﻿@model MyProject.Models.Tracking
+
+@{
+    Layout = null;
+}
+
+    <tr>
+        <td class="center">@Model.H_Date</td>
+        <td class="center">@Model.H_Time</td>
+        <td class="center">@Model.Location</td>
+        @if (!string.IsNullOrEmpty(Model.Link) && Model.Link.Contains("http") && (Model.Link.ToUpper().Contains("WWWW") || Model.Link.ToUpper().Contains("COM")))
+        {
+            <td class="center">   <a href='@Model.Link' target="_blank">@Model.Status</a> </td>
+        }
+        else
+        {
+            <td class="center">   @Model.Status </td>
+        }
+        <td class="right"><a data-toggle="modal" href="#" role="button" class="ForRemove" data-TrackingId="@Model.TrackingId"><i class="fa fa-trash-o  fa-2x"></i></a></td>
+    </tr>

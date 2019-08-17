@@ -26,9 +26,9 @@ namespace MyProject.WebServices
             }
         }
 
-        public TrackingOrderViewModel GetTrackingByOrderId()
+        public TrackingOrderViewModel GetTrackingByOrderId(int orderId)
         {
-            var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Tracking.GetTrackingByOrderId);
+            var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Tracking.GetTrackingByOrderId, orderId);
             var Content = Get<List<Tracking>>(URL);
             if (Content.IsSuccessful)
             {

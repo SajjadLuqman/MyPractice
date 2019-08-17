@@ -40,6 +40,20 @@ namespace MyProject.WebServices
             }
         }
 
+        public Order GetByAirWayBillNumberNumber(string airWayBillNumberNumber)
+        {
+            var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Order.GetByAirWayBillNumberNumber, airWayBillNumberNumber);
+            var Content = Get<Order>(URL);
+            if (Content.IsSuccessful)
+            {
+                return Content.Model;
+            }
+            else
+            {
+                return new Order() { ValidationMessage = new ValidationMessage() { ErrorMessage = Content.Message } };
+            }
+        }
+
         public ValidationMessage DeleteOrder(int orderId)
         {
             var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Order.DeleteOrderByOrderId, orderId);

@@ -31,7 +31,15 @@ namespace MyProject.WebApiServices.Controllers
         [HttpGet]
         public IHttpActionResult GetById(string OrderId)
         {
-            return Ok(_repo.GetById(OrderId));
+            return Ok(_repo.GetById(Convert.ToInt32(OrderId)));
+        }
+
+        [Authorize]
+        [Route(URLs.Order.GetByAirWayBillNumberNumber)]
+        [HttpGet]
+        public IHttpActionResult GetByAirWayBillNumberNumber(string airWayBillNumberNumber)
+        {
+            return Ok(_repo.GetByAirWayBillNumberNumber(airWayBillNumberNumber));
         }
 
         [Authorize]

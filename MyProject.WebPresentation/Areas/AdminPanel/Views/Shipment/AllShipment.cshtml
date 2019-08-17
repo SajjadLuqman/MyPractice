@@ -27,8 +27,8 @@
 
                 <table style=" margin: 0 auto;">
                     <tr>
-                        <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Order.AirWayBillNumberNumber, new { @placeholder = "Air Way Bill Number", @class = "form-control" })</div></td>
-                        <td style="padding: 2px;"><div class="form-group"><button class="btn btn-primary" style="height: 32px;margin-right: 25px;" type="submit">Search</button></div></td>
+                        <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Order.AirWayBillNumberNumber, new { @placeholder = "Air Way Bill Number", @class = "form-control AirBillNumber" })</div></td>
+                        <td style="padding: 2px;"><div class="form-group"><button id="btnSearch" class="btn btn-primary" style="height: 32px;margin-right: 25px;" type="submit">Search</button></div></td>
                     </tr>
                 </table>
                 <div class="btn-group">
@@ -39,14 +39,14 @@
     </div>
 </div>
 
-<div style="
+<div id="lblResult" style="
          text-align: right;
          color: green;
          font-size: larger;">
     @ViewBag.Message
 </div>
 
-<table class="table">
+<table class="table searchShipments">
     <thead>
         <tr>
             <th width="10%">H. Airway Bill #</th>
@@ -62,28 +62,29 @@
         </tr>
     </thead>
     <tbody>
-
-        @foreach (var item in Model.Orders)
+        @if (Model.Orders != null)
         {
-
-            <tr>
-                <td style="font-size: 11px">@item.AirWayBillNumberNumber</td>
-                <td style="font-size: 11px">@item.Shipper_SenderNameAddress</td>
-                <td style="font-size: 11px">@item.Consignee_ReceiverNameAddress</td>
-                <td style="font-size: 11px">@item.PortOfLanding</td>
-                <td style="font-size: 11px">@item.ProtOfDeliver</td>
-                <td style="font-size: 11px">@item.COD</td>
-                <td style="font-size: 11px">@item.ETA</td>
-                <td style="font-size: 11px">@item.ETD</td>
-                <td style="font-size: 11px">@item.CurrentStatus</td>
-
-                <td>
-                    <a href="/AdminPanel/Tracking/AddTrackHistory/@item.OrderId"><i class="fa fa-history  fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;
-                    <a href="/AdminPanel/Shipment/NewShipment/@item.OrderId"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;
-                    <a data-toggle="modal" href="/AdminPanel/Shipment/DeleteShipment/@item.OrderId" role="button"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
-                </td>
-            </tr>
+            foreach (var item in Model.Orders)
+            {
+                <tr>
+                    <td style="font-size: 11px">@item.AirWayBillNumberNumber</td>
+                    <td style="font-size: 11px">@item.Shipper_SenderNameAddress</td>
+                    <td style="font-size: 11px">@item.Consignee_ReceiverNameAddress</td>
+                    <td style="font-size: 11px">@item.PortOfLanding</td>
+                    <td style="font-size: 11px">@item.ProtOfDeliver</td>
+                    <td style="font-size: 11px">@item.COD</td>
+                    <td style="font-size: 11px">@item.ETA</td>
+                    <td style="font-size: 11px">@item.ETD</td>
+                    <td style="font-size: 11px">@item.CurrentStatus</td>
+                    <td>
+                        <a href="/AdminPanel/Tracking/AddTrackHistory/@item.OrderId"><i class="fa fa-history  fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                        <a href="/AdminPanel/Shipment/NewShipment/@item.OrderId"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                        <a data-toggle="modal" href="/AdminPanel/Shipment/DeleteShipment/@item.OrderId" role="button"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            }
         }
+
     </tbody>
 </table>
 
@@ -99,4 +100,29 @@
         }
         <li><a href="#" onclick="SearchWithPageing(@Model.TotalPages);">&raquo;</a></li>
     </ul>*@
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btnSearch").click(function (e) {
+
+            var URL = "/AdminPanel/Shipment/SearchByAirWayBillNumber";
+            var AirBillNumber = $(".AirBillNumber").val();
+
+            if (AirBillNumber == null || AirBillNumber == "")
+                AirBillNumber = 0;
+
+            var model = { airWayBillNumberNumber: AirBillNumber };
+
+            $.post(URL, model, function (res) {
+                $(".searchShipments tbody").html(res);
+            }).fail(function (response) {
+                $("#lblResult").val("Error Occured, Please contact admin");
+                console.log(response);
+            });
+        });
+
+    })
+</script>
 

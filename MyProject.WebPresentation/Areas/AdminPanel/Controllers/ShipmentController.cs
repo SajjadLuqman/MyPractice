@@ -67,7 +67,15 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
                     order.CreatedBy = Session["userId"].ToString();
                     order.CurrentStatus = "1";
 
-                    Result = _orderService.AddOrder(order);
+                    if(_orderService.GetByAirWayBillNumberNumber(order.AirWayBillNumberNumber)==null)
+                    {
+                        Result = _orderService.AddOrder(order);
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Air Way Bill Number Already Exist.";
+                        return View();
+                    }
                 }
                 else
                 {
@@ -98,6 +106,32 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
                 return View(new TrackingOrderViewModel() {  Orders = new List<Order>() });
             }
             return View(Model);
+        }
+
+        [HttpPost]
+        public ActionResult SearchByAirWayBillNumber(string airWayBillNumberNumber)
+        {
+            var model = new List<Order>();
+
+            if(airWayBillNumberNumber == "0")
+            {
+                var Result = _orderService.GetAllOrders();
+                model = Result.Orders;
+            }
+            else
+            {
+                 model.Add(_orderService.GetByAirWayBillNumberNumber(airWayBillNumberNumber));
+            }
+
+            var URL = "~/Areas/AdminPanel/Views/Shipment/_SearchShipments.cshtml";
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(URL, model);
+            }
+            else
+            {
+                return View(URL, model);
+            }
         }
 
         public ActionResult DeleteShipment(string Id)
