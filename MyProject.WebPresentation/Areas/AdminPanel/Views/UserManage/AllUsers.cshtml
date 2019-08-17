@@ -1,0 +1,72 @@
+﻿@model List<MyProject.Models.Users>
+
+@{
+    ViewBag.Title = "AllUsers";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+
+<div class="header">
+    <div class="stats">
+        <p class="stat"><span class="label label-info">5</span> In Process</p>
+        <p class="stat"><span class="label label-success">27</span> Delivered</p>
+        <p class="stat"><span class="label label-danger">15</span> In Way</p>
+    </div>
+
+    <h1 class="page-title">Users</h1>
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a> </li>
+        <li class="active">All Users</li>
+    </ul>
+</div>
+
+<div id="lblResult" style="
+         text-align: right;
+         color: green;
+         font-size: larger;">
+    @ViewBag.Message
+</div>
+
+<table class="table searchShipments">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Type</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td style="font-size: 11px">@item.UserId</td>
+                    <td style="font-size: 11px">@item.UserName</td>
+                    <td style="font-size: 11px">******</td>
+                    <td style="font-size: 11px">@item.Type</td>
+                    <td>
+                        <a href="/AdminPanel/UserManage/NewUser/@item.UserId"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                        <a data-toggle="modal" href="/AdminPanel/UserManage/DeleteUser/@item.UserId" role="button"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+
+@*<ul class="pagination">
+        <li><a href="#" onclick="SearchWithPageing(1)">&laquo;</a></li>
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li><a href="#" onclick="SearchWithPageing(@i);">@i</a></li>
+        }
+        <li><a href="#" onclick="SearchWithPageing(@Model.TotalPages);">&raquo;</a></li>
+    </ul>*@
+
+
+

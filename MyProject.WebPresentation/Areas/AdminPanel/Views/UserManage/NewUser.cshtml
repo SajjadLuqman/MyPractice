@@ -1,0 +1,89 @@
+﻿@model MyProject.Models.Users
+
+@{
+    ViewBag.Title = "NewUser";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+
+<div class="header">
+    <div class="stats">
+        <p class="stat"><span class="label label-info">5</span> In Process</p>
+        <p class="stat"><span class="label label-success">27</span> Delivered</p>
+        <p class="stat"><span class="label label-danger">15</span> In Way</p>
+    </div>
+
+    @if (Model == null || Model.UserId == null || Model.UserId == 0)
+    {
+        <h1 class="page-title">Add User Information</h1>
+    }
+    else
+    {
+<h1 class="page-title">Update User Information</h1>
+    }
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a> </li>
+        <li class="active">Shipment Detail</li>
+    </ul>
+</div>
+
+<ul class="nav nav-tabs">
+    @if (Model == null || Model.UserId == null || Model.UserId == 0)
+    {
+        <li class="active"><a href="#home" data-toggle="tab">New User</a></li>
+    }
+    else
+    {
+        <li class="active"><a href="#home" data-toggle="tab">Update User</a></li>
+    }
+</ul>
+
+<div class="row">
+    @using (Html.BeginForm("NewUser", "UserManage"))
+    {
+        @Html.HiddenFor(x => x.UserId)
+        <div class="col-md-6">
+            <br>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active in" id="home">
+                    <div id="tab">
+
+                        <div class="form-group">
+                            <label>User Name</label>
+                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", MaxLength = "50", autocomplete = "off" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            @Html.PasswordFor(x => x.Password, new { @class = "form-control", MaxLength = "50" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Type</label>
+
+                            @Html.DropDownListFor(x=>x.Type, new List<SelectListItem>{
+                            new SelectListItem{ Text="Admin", Value="Admin"},
+                            new SelectListItem{ Text="User", Value="User"},
+                            }, "Select User",new { @class="form-control"})
+
+                        </div>
+
+                    </div>
+                    <div class="btn-toolbar list-toolbar">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="error-text">@ViewBag.Message</p>
+                    </div>
+                    @Html.ValidationSummary(false, "")
+
+                </div>
+            </div>
+        </div>
+      
+    }
+</div>
+
+
+
+

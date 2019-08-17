@@ -1,9 +1,10 @@
-﻿@model MyProject.Models.Order
+﻿@model MyProject.Models.Users
 
 @{
-    ViewBag.Title = "DeleteShipment";
+    ViewBag.Title = "DeleteUser";
     Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
 }
+
 
 <div class="header">
     <div class="stats">
@@ -12,46 +13,42 @@
         <p class="stat"><span class="label label-danger">15</span> In Way</p>
     </div>
 
-    <h1 class="page-title">Delete Shipment</h1>
+    <h1 class="page-title">Delete User</h1>
     <ul class="breadcrumb">
         <li><a href="#">Home</a> </li>
-        <li class="active">Delete Shipment</li>
+        <li class="active">Delete User</li>
     </ul>
 </div>
 
 
 <div class="header">
-    <h1 class="page-title">Are You Want To Delete This Shipment?</h1>
+    <h1 class="page-title">Are You Want To Delete This User?</h1>
 </div>
 
 <div class="main-content">
 
-    @using (Html.BeginForm("DeleteShipment", "Shipment", FormMethod.Post))
+    @using (Html.BeginForm("DeleteUser", "UserManage", FormMethod.Post))
     {
-        @Html.HiddenFor(x => x.OrderId)
+        @Html.HiddenFor(x => x.UserId)
         <div class="row">
             <div class="col-md-6">
                 <div id="myTabContent" class="tab-content">
                     <div class="tab-pane active in" id="home">
                         <div id="tab">
                             <div class="form-group">
-                                H. Airway Bill #:  @Html.DisplayFor(x => x.AirWayBillNumberNumber)
+                                User Name:  @Html.DisplayFor(x => x.UserName)
                             </div>
 
                             <div class="form-group">
-                                Shipper:  @Html.DisplayFor(x => x.Shipper_SenderNameAddress)
+                                Type:  @Html.DisplayFor(x => x.Type)
                             </div>
 
-
-                            <div class="form-group">
-                                Consignee:  @Html.DisplayFor(x => x.Consignee_ReceiverNameAddress)
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="btn-toolbar list-toolbar">
                     <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Delete</button>
-                    <a href="/AdminPanel/Shipment/AllShipment" class="btn btn-danger">Back</a>
+                    <a href="/AdminPanel/UserManage/AllUsers" class="btn btn-danger">Back</a>
                 </div>
                 <div class="modal-body">
                     <p class="error-text">@ViewBag.Message</p>
@@ -61,5 +58,3 @@
 
     }
 </div>
-
-

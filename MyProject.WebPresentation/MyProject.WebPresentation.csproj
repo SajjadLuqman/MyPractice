@@ -124,6 +124,7 @@
     <Compile Include="Areas\AdminPanel\Controllers\AdminController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\ShipmentController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\TrackingController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\UserManageController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -409,6 +410,9 @@
     <Content Include="Areas\AdminPanel\Views\Tracking\AddTrackHistory.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Shipment\_SearchShipments.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Tracking\_Track.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\UserManage\NewUser.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\UserManage\AllUsers.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\UserManage\DeleteUser.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

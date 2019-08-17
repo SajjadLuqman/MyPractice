@@ -5,27 +5,27 @@
     Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
 }
 
-    <div class="header">
-        <div class="stats">
-            <p class="stat"><span class="label label-info">5</span> In Process</p>
-            <p class="stat"><span class="label label-success">27</span> Delivered</p>
-            <p class="stat"><span class="label label-danger">15</span> In Way</p>
-        </div>
-
-        @if (Model == null || Model.OrderId == null || Model.OrderId == 0)
-        {
-            <h1 class="page-title">Add Shipment</h1>
-
-        }
-        else
-        {
-            <h1 class="page-title">Update Shipment</h1>
-        }
-        <ul class="breadcrumb">
-            <li><a href="#">Home</a> </li>
-            <li class="active">Shipment Detail</li>
-        </ul>
+<div class="header">
+    <div class="stats">
+        <p class="stat"><span class="label label-info">5</span> In Process</p>
+        <p class="stat"><span class="label label-success">27</span> Delivered</p>
+        <p class="stat"><span class="label label-danger">15</span> In Way</p>
     </div>
+
+    @if (Model == null || Model.OrderId == null || Model.OrderId == 0)
+    {
+        <h1 class="page-title">Add Shipment</h1>
+
+    }
+    else
+    {
+        <h1 class="page-title">Update Shipment</h1>
+    }
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a> </li>
+        <li class="active">Shipment Detail</li>
+    </ul>
+</div>
 
 <ul class="nav nav-tabs">
     @if (Model == null || Model.OrderId == null || Model.OrderId == 0)

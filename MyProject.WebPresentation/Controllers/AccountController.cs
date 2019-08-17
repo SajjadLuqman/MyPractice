@@ -30,8 +30,6 @@ namespace MyProject.WebPresentation.Controllers
         [HttpPost]
         public ActionResult Login(Users users)
         {
-            if (ModelState.IsValid)
-            {
                 var result = _userRepo.GetTokenLogin(users);
                 if (result != null && !string.IsNullOrEmpty(result.access_token))
                 {
@@ -45,7 +43,6 @@ namespace MyProject.WebPresentation.Controllers
                 {
                     ViewBag.ErrorMessage = "UserName / Password Invalid!";
                 }
-            }
             return View();
         }
     }
