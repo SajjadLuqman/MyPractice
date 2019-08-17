@@ -21,6 +21,7 @@ namespace MyProject.WebApiServices.Constants
         public static class Order
         {
             public const string GetOrder = "~/api/order/GetOrder";
+            public const string GetTrackHistory = "~/api/order/GetTrackHistory/{airWayBillNumberNumber}";
             public const string GetOrderByOrderId = "~/api/order/GetOrderByOrderId/{OrderId}";
             public const string GetByAirWayBillNumberNumber = "~/api/order/GetByAirWayBillNumberNumber/{airWayBillNumberNumber}";
             public const string DeleteOrderByOrderId = "~/api/order/DeleteOrderByOrderId/{OrderId}";

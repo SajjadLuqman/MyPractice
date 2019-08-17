@@ -8,6 +8,8 @@
         <td class="center">@Model.H_Date</td>
         <td class="center">@Model.H_Time</td>
         <td class="center">@Model.Location</td>
+        <td class="center">@Model.Pieces</td>
+
         @if (!string.IsNullOrEmpty(Model.Link) && Model.Link.Contains("http") && (Model.Link.ToUpper().Contains("WWWW") || Model.Link.ToUpper().Contains("COM")))
         {
             <td class="center">   <a href='@Model.Link' target="_blank">@Model.Status</a> </td>

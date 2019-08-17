@@ -20,27 +20,61 @@ namespace MyProject.WebPresentation.Controllers
 
         public ActionResult Index()
         {
-            var allOrders = _order.GetAllOrders();
-            //var allStudents = _repo.GetAllStudents();
-            //var student = _repo.GetStudentById(5);
-            //var Effect = _repo.DeleteStudentById(9);
-            //var effectRow = _repo.UpdateStudents(new Models.Student() { StudentId = 10, Name = "Pakistan ii ii", Address = "Zindabauud" });
-            //var PKID = _repo.AddStudents(new Models.Student() { Name = "Pakuuistan", Address = "Zindabahhhd" });
-            ViewBag.Title = "Home Page";
+            return View();
+        }
+
+        public ActionResult Tracking(string Id)
+        {
+            var Model = _order.GetTrackHistory(Id);
+            if(Model.ValidationMessage.HasError)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(Model);
+        }
+
+        public ActionResult AirFreight()
+        {
+            return View();
+        }
+
+        public ActionResult Associations()
+        {
+            return View();
+        }
+
+        public ActionResult CustomClearance()
+        {
+            return View();
+        }
+
+        public ActionResult ProjectHandling()
+        {
+            return View();
+        }
+
+        public ActionResult RoadTransportation()
+        {
+            return View();
+        }
+
+        public ActionResult SeaFreight()
+        {
+            return View();
+        }
+
+        public ActionResult WarehousingAndDistribution()
+        {
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

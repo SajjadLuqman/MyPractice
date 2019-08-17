@@ -15,6 +15,8 @@ namespace MyProject.Models
         public string Status { get; set; }
         public string Location { get; set; }
         public string Link { get; set; }
+        public string Pieces { get; set; }
+        
         public string CreateDate { get; set; }
         public string ModifiedDate { get; set; }
         public string CreatedBy { get; set; }

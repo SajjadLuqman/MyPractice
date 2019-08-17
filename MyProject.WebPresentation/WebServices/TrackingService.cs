@@ -6,7 +6,6 @@ using System.Web;
 using MyProject.Models;
 using MyProject.Core.Helpers;
 using MyProject.Core.Constants;
-using MyProject.WebPresentation.Models;
 
 namespace MyProject.WebServices
 {

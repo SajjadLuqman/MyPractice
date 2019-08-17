@@ -22,7 +22,7 @@ namespace MyProject.DAL.Repositories
 
         public Order GetByAirWayBillNumberNumber(string airWayBillNumberNumber)
         {
-            return QueryExecutor.Query<Order>(StoreProcedures.spOrderByAirWayBillNumberNumber.ToString(), new { airWayBillNumberNumber }, CommandType.StoredProcedure).ToList().FirstOrDefault();
+            return QueryExecutor.Query<Order>(StoreProcedures.spOrderByAirWayBillNumberNumber.ToString(), new { AirWayBillNumberNumber = airWayBillNumberNumber }, CommandType.StoredProcedure).ToList().FirstOrDefault();
         }
 
         public int DeleteById(int OrderId)

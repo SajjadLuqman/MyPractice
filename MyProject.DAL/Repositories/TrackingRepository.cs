@@ -28,11 +28,11 @@ namespace MyProject.DAL.Repositories
         }
         public int Update(Tracking obj)
         {
-            return QueryExecutor.Execute(StoreProcedures.spUpdateTracking.ToString(), new { obj.H_Date, obj.H_Time,obj.Link,obj.Location,obj.ModifiedBy,obj.ModifiedDate,obj.OrderId,obj.Status,obj.TrackingId });
+            return QueryExecutor.Execute(StoreProcedures.spUpdateTracking.ToString(), new { obj.H_Date, obj.H_Time,obj.Link,obj.Location,obj.ModifiedBy,obj.ModifiedDate,obj.OrderId,obj.Status,obj.TrackingId ,obj.Pieces});
         }
         public int Insert(Tracking obj)
         {
-            return QueryExecutor.Execute(StoreProcedures.spInsertTracking.ToString(), new { obj.H_Date, obj.H_Time, obj.Link, obj.Location, obj.CreatedBy, obj.CreateDate, obj.OrderId, obj.Status, obj.TrackingId });
+            return QueryExecutor.Execute(StoreProcedures.spInsertTracking.ToString(), new { obj.H_Date, obj.H_Time, obj.Link, obj.Location, obj.CreatedBy, obj.CreateDate, obj.OrderId, obj.Status, obj.TrackingId, obj.Pieces });
         }
     }
 }

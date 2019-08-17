@@ -21,6 +21,7 @@ namespace MyProject.Core.Constants
         public static class Order
         {
             public const string GetOrder = "/api/order/GetOrder";
+            public const string GetTrackHistory = "/api/order/GetTrackHistory/{0}";
             public const string GetOrderByOrderId = "/api/order/GetOrderByOrderId/{0}";
             public const string GetByAirWayBillNumberNumber = "/api/order/GetByAirWayBillNumberNumber/{0}";
             public const string DeleteOrderByOrderId = "/api/order/DeleteOrderByOrderId/{0}";

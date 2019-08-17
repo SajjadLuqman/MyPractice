@@ -13,9 +13,21 @@ namespace MyProject.WebApiServices.Controllers
     public class OrderController : BaseApiController
     {
         private BLOrder _repo;
+        private BLTracking _trackRepo;
         public OrderController()
         {
             _repo = new BLOrder();
+            _trackRepo = new BLTracking();
+        }
+
+        [Route(URLs.Order.GetTrackHistory)]
+        [HttpGet]
+        public IHttpActionResult GetTrackHistory(string airWayBillNumberNumber)
+        {
+            TrackingOrderViewModel Model = new TrackingOrderViewModel();
+            Model.Order = _repo.GetByAirWayBillNumberNumber(airWayBillNumberNumber);
+            Model.TrackingList = _trackRepo.GetByOrderId(Model.Order.OrderId.ToString());
+            return Ok(Model);
         }
 
         [Authorize]

@@ -1,31 +1,412 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = null;
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Matrix Logistics International Freight Forwarders</title>
+    <link rel="stylesheet" href="/ClientResourcesFiles/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ClientResourcesFiles/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/ClientResourcesFiles/style.css">
+    <link rel="stylesheet" href="/ClientResourcesFiles/css/stylesheet.css">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/ClientResourcesFiles/menu_files/css3menu1/style.css" type="text/css" />
+
+    <style type="text/css">
+        ._css3m {
+            display: none
+        }
+    </style>
+
+    <link href="/ClientResourcesFiles/css/animate.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" type="text/css" href="/ClientResourcesFiles/engine1/style.css" />
+    <script type="text/javascript" src="/ClientResourcesFiles/engine1/jquery.js"></script>
+
+</head>
+<body>
+    <header class="top-header">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4"><div style="float:left; padding-top:15px;"><a href="index.html"><img src="/ClientResourcesFiles/img/logo2.png" alt="" class="img-responsive logo"></a></div></div>
+                <div class="col-lg-8">
+                    <div class="header-backup"></div>
+                    <div style="float:right; padding-top:15px; padding-bottom:15px;">
+                        <div id="mailchimp-form">
+                            <div class="email-input">
+                                <input id="mailchimp-input" class="txtTrackingId" type="email" placeholder="Enter your Tracking ID">
+                                <button id="btnSearch" class="email-submit" type="submit"><i class="fa fa-sign-in"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="float: right; padding-right:20px;">
+                        <input type="checkbox" id="css3menu-switcher" class="c3m-switch-input">
+                        <ul id="css3menu1" class="topmenu">
+                            <li class="switch"><label onclick="" for="css3menu-switcher"></label></li>
+                            <li class="topmenu"><a href="/" style="height:25px;line-height:25px;">HOME</a></li>
+                            <li class="topmenu">
+                                <a href="#" style="height:25px;line-height:25px;"><span>SERVICES</span></a>
+                                <ul>
+                                    <li><a href="/Home/SeaFreight">Sea Freight</a></li>
+                                    <li><a href="/Home/AirFreight">Air Freight</a></li>
+                                    <li><a href="/Home/ProjectHandling">Project Handling</a></li>
+                                    <li><a href="/Home/CustomClearance">Custom Clearance</a></li>
+                                    <li><a href="/Home/RoadTransportation">Road Transporation</a></li>
+                                    <li><a href="/Home/WarehousingAndDistribution"> Warehousing & Distribution</a></li>
+                                </ul>
+                            </li>
+                            <li class="topmenu"><a href="/Home/Associations" style="height:25px;line-height:25px;">ASSOCIATIONS</a></li>
+                            <li class="topmenu"><a href="#" style="height:25px;line-height:25px;">NEWS</a></li>
+                            <li class="topmenu"><a href="/Home/Contact" style="height:25px;line-height:25px;">CONTACT US</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </header>
+
+    <div id="wowslider-container1">
+        <div class="ws_images">
+            <ul>
+                <li><img src="/ClientResourcesFiles/data1/images/matrixlogisticslogistics.jpg" alt="Logistic-Services" title="Logistic-Services" id="wows1_0" /></li>
+                <li><img src="/ClientResourcesFiles/data1/images/matrixlogisticsairfreigh.jpg" alt="Matrix-Logistics-Air-Freight" title="Matrix-Logistics-Air-Freight" id="wows1_1" /></li>
+                <li><img src="/ClientResourcesFiles/data1/images/matrixlogisticsseafreigh.jpg" alt="Matrix-Logistics-Sea-Freight" title="Matrix-Logistics-Sea-Freight" id="wows1_2" /></li>
+                <li><img src="/ClientResourcesFiles/data1/images/matrixlogisticsroadtrans.jpg" alt="Matrix-Logistics-Road-Transportation" title="Matrix-Logistics-Road-Transportation" id="wows1_3" /></li>
+                <li><img src="/ClientResourcesFiles/data1/images/matrixlogisticswarehousin.jpg" alt="Matrix-Logistics-Warehousing" title="Matrix-Logistics-Warehousing" id="wows1_4" /></li>
+            </ul>
+        </div>
+        <div class="ws_bullets">
+            <div>
+                <a href="#" title="Logistic-Services"><span><img src="/ClientResourcesFiles/data1/tooltips/matrixlogisticslogistics.jpg" alt="Logistic-Services" />1</span></a>
+                <a href="#" title="Matrix-Logistics-Air-Freight"><span><img src="/ClientResourcesFiles/data1/tooltips/matrixlogisticsairfreigh.jpg" alt="Matrix-Logistics-Air-Freight" />2</span></a>
+                <a href="#" title="Matrix-Logistics-Sea-Freight"><span><img src="/ClientResourcesFiles/data1/tooltips/matrixlogisticsseafreigh.jpg" alt="Matrix-Logistics-Sea-Freight" />3</span></a>
+                <a href="#" title="Matrix-Logistics-Road-Transportation"><span><img src="/ClientResourcesFiles/data1/tooltips/matrixlogisticsroadtrans.jpg" alt="Matrix-Logistics-Road-Transportation" />4</span></a>
+                <a href="#" title="Matrix-Logistics-Warehousing"><span><img src="/ClientResourcesFiles/data1/tooltips/matrixlogisticswarehousin.jpg" alt="Matrix-Logistics-Warehousing" />5</span></a>
+            </div>
+        </div>
+        <div class="ws_shadow"></div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <div style="clear:both"></div>
+
+    <div style="clear:both"></div>
+
+    <div style="width:100%; background-color:white;">
+        <div class="container">
+            <div class="row" style="background-color:#2A2B2D; padding-top:5px; padding-bottom:5px; padding-left:5px; padding-right:5px;">
+
+
+                <div class="col-lg-3" style="border:1px #999999 solid;">
+                    <table>
+                        <tr>
+                            <td style="width:25%;"><img src="/ClientResourcesFiles/img/air-freight.png" alt="" class="img-responsive displayed"></td>
+                            <td style="width:75%;">
+                                <p style=" font-family:Verdana, Geneva, Tahoma, sans-serif; color:#F19100; font-size:large; font-weight:bold; padding-top:10px;">Air Freight</p>
+                                <p style="font-family:Verdana, Geneva, Tahoma, sans-serif; color:white;text-align:justify; padding-right:10px;">
+                                    Our worldwide air freight management capability ensures that your cargo reaches any continent, country or city in the most cost effective way...
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="col-lg-3" style="border:1px #999999 solid;">
+                    <table>
+                        <tr>
+                            <td style="width:25%;"><img src="/ClientResourcesFiles/img/sea-freight.png" alt="" class="img-responsive displayed"></td>
+                            <td style="width:75%;">
+                                <p style=" font-family:Verdana, Geneva, Tahoma, sans-serif; color:#F19100; font-size:large; font-weight:bold; padding-top:10px;">Sea Freight</p>
+                                <p style="font-family:Verdana, Geneva, Tahoma, sans-serif; color:white;text-align:justify; padding-right:10px;">
+                                    Fully realizing the present day advancement in Sea freight transportation to different parts of the world, we have successfully made and maintained...
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="col-lg-3" style="border:1px #999999 solid;">
+                    <table>
+                        <tr>
+                            <td style="width:25%;"><img src="/ClientResourcesFiles/img/road-freight.png" alt="" class="img-responsive displayed"></td>
+                            <td style="width:75%;">
+                                <p style=" font-family:Verdana, Geneva, Tahoma, sans-serif; color:#F19100; font-size:large; font-weight:bold; padding-top:10px;">Road Transportation</p>
+                                <p style="font-family:Verdana, Geneva, Tahoma, sans-serif; color:white;text-align:justify; padding-right:10px;">
+                                    Matrix Logistics has its own road transport subsidiary under the name of Rahim Goods Transport System. We operate an integrated transport network...
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="col-lg-3" style="border:1px #999999 solid;">
+                    <table>
+                        <tr>
+                            <td style="width:25%;"><img src="/ClientResourcesFiles/img/warehousing.png" alt="" class="img-responsive displayed"></td>
+                            <td style="width:75%;">
+                                <p style=" font-family:Verdana, Geneva, Tahoma, sans-serif; color:#F19100; font-size:large; font-weight:bold; padding-top:10px;">Warehousing</p>
+                                <p style="font-family:Verdana, Geneva, Tahoma, sans-serif; color:white;text-align:justify; padding-right:10px;">
+                                    Matrix Logistics offers full range of warehousing & distribution services in major cities of Pakistan. We offer these services for both short term and...
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+
+        <div style="clear:both"></div><br>
+
+
+
+        <div class="container">
+            <div class="row" style="padding-top:30px; padding-bottom:10px;">
+                <div style="padding-left:5px;"><img src="/ClientResourcesFiles/img/wel.jpg" alt="" class="img-responsive"></div>
+                <p style=" font-family:Verdana, Geneva, Tahoma, sans-serif; text-align:justify; color:#666666; padding-left:10px;">
+                    We are serving exporters & Importers by means of providing highly professional logistic services. We excel in handling of Textile & Apparels, Pharmaceuticals, Leather Products, Home Appliances, Chemicals, Cement, Handicraft, Rice, Dangerous goods and perishables. We have defined our objectives by providing the customers state of the art facilities through designed professionals in their respective fields. All this is necessary to keep the group’s activities alive and forging in a market which is not only cost conscious but also remains vigilant on matters of service.
+                    <br><br>
+                    Highly competitive activities in the market always keep on threatening the existence of an agent and this fact alone demands to maintain consistency in efforts to always upgrade our image to create an edge over others. We are not only striving for utilizing the experience at its best but also the operation continues to receive the required up-gradation in meeting the modern age needs.
+                    Our professionalism & dedication to our work confirms that our customer have selected us for many positive reasons. It is what enabled us to transport hundreds of tons of their cargo by air and over 3000 tones by sea last year to different destinations round the globe. Our customer’s trust is what believed to be the driving force.
+                </p>
+
+
+
+                <div class="col-md-3">
+                    <img src="/ClientResourcesFiles/img/pic1.jpg" alt="" class="img-responsive displayed">
+                </div>
+
+                <div class="col-md-3">
+                    <img src="/ClientResourcesFiles/img/pic2.jpg" alt="" class="img-responsive displayed">
+                </div>
+
+                <div class="col-md-3">
+                    <img src="/ClientResourcesFiles/img/pic3.jpg" alt="" class="img-responsive displayed">
+                </div>
+
+                <div class="col-md-3">
+                    <img src="/ClientResourcesFiles/img/pic4.jpg" alt="" class="img-responsive displayed">
+                </div>
+
+
+
+
+
+
+                <div style="clear:both"></div><br><br>
+
+                <div class="col-lg-4">
+                    <p style=" font-family:Verdana, Geneva, Tahoma, sans-serif; color:#F19100; font-size:x-large; font-weight:bold; padding-top:10px; line-height:170%;">
+                        WE OFFER QUICK &<br>
+                        POWERFUL SOLUTION<br>
+                        FOR TRANSPORT<br>
+                    </p>
+                    <p style=" font-family:Verdana, Geneva, Tahoma, sans-serif; text-align:justify; color:#666666; padding-left:0px;">
+                        We are serving exporters & Importers by means of providing highly professional logistic services. We excel in handling of Textile & Apparels, Pharmaceuticals, Leather Products, Home Appliances, Chemicals, Cement, Handicraft, Rice, Dangerous goods and perishables. We have defined our objectives by providing the customers state of the art facilities through designed professionals in their respective fields.
+                    </p>
+                    <br>
+                    <img src="/ClientResourcesFiles/img/ourservice.jpg" alt="" class="img-responsive">
+                </div>
+
+                <div class="col-lg-8" style="padding-left:50px;">
+
+                    <div class="col-lg-5" style="box-shadow: 0px 0px 8px;">
+                        <table>
+                            <tr>
+                                <td style="width:25%;"><img src="/ClientResourcesFiles/img/symbol1.jpg" alt="" class="img-responsive displayed"></td>
+                                <td style="width:75%;">
+                                    <p style=" font-family:Verdana, Geneva, Tahoma, sans-serif; color:#F19100; font-size:large; font-weight:bold; padding-top:10px;">FAST AIR FREIGHT</p>
+                                    <p style="font-family:Verdana, Geneva, Tahoma, sans-serif; color:#666666;text-align:justify; padding-right:10px;">
+                                        Matrix Logistics has its own road transport subsidiary under the name of Rahim Goods Transport System. We operate an integrated transport network...
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="col-lg-1"> </div>
+
+                    <div class="col-lg-5" style="box-shadow: 0px 0px 8px;">
+                        <table>
+                            <tr>
+                                <td style="width:25%;"><img src="/ClientResourcesFiles/img/symbol2.jpg" alt="" class="img-responsive displayed"></td>
+                                <td style="width:75%;">
+                                    <p style=" font-family:Verdana, Geneva, Tahoma, sans-serif; color:#F19100; font-size:large; font-weight:bold; padding-top:10px;">QICKEST CARGO</p>
+                                    <p style="font-family:Verdana, Geneva, Tahoma, sans-serif; color:#666666;text-align:justify; padding-right:10px;">
+                                        Matrix Logistics has its own road transport subsidiary under the name of Rahim Goods Transport System. We operate an integrated transport network...
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="col-lg-1"> </div>
+
+
+                    <div style="clear:both"></div><br><br>
+
+                    <div class="col-lg-5" style="box-shadow: 0px 0px 8px;">
+                        <table>
+                            <tr>
+                                <td style="width:25%;"><img src="/ClientResourcesFiles/img/symbol3.jpg" alt="" class="img-responsive displayed"></td>
+                                <td style="width:75%;">
+                                    <p style=" font-family:Verdana, Geneva, Tahoma, sans-serif; color:#F19100; font-size:large; font-weight:bold; padding-top:10px;">GROUND SHIPPIING</p>
+                                    <p style="font-family:Verdana, Geneva, Tahoma, sans-serif; color:#666666;text-align:justify; padding-right:10px;">
+                                        Matrix Logistics has its own road transport subsidiary under the name of Rahim Goods Transport System. We operate an integrated transport network...
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="col-lg-1"> </div>
+
+                    <div class="col-lg-5" style="box-shadow: 0px 0px 8px;">
+                        <table>
+                            <tr>
+                                <td style="width:25%;"><img src="/ClientResourcesFiles/img/symbol4.jpg" alt="" class="img-responsive displayed"></td>
+                                <td style="width:75%;">
+                                    <p style=" font-family:Verdana, Geneva, Tahoma, sans-serif; color:#F19100; font-size:large; font-weight:bold; padding-top:10px;">TIMELY DELIVERY</p>
+                                    <p style="font-family:Verdana, Geneva, Tahoma, sans-serif; color:#666666;text-align:justify; padding-right:10px;">
+                                        Matrix Logistics has its own road transport subsidiary under the name of Rahim Goods Transport System. We operate an integrated transport network...
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="col-lg-1"> </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <div style="clear:both"></div>
+
+    <div class="testimonials">
+        <div class="container">
+            <div class="row">
+                <h2 style="color:#FA9200;">INNOVATIVE MANAGEMENT</h2>
+                <p style="font-family:Verdana, Geneva, Tahoma, sans-serif; color: #CCCCCC;">
+                    We have fully comprehended that the future of freight industry neither may not accept cosmetic form of handling strategies and thus the servicing agencies must take an extra step in meeting the upcoming challenge in the country. We have, therefore, invested much time and effort to innovate management and developed new concepts through re-organization of our services in the respective fields.
+                    <br><br>
+                    Fundamentally, our network performs a service job to the customers. It should therefore, begin from the stage, which sets an initial inquiry and concludes after the shipment has been received by the consignee/buyer. MATRIX LOGISTICS through working companies and offices in other cities extends innovative ideas in serving.
+                </p>
+
+            </div>
+        </div>
     </div>
-</div>
+
+    <div style="clear:both"></div>
+
+    <div class="mission">
+        <div class="container">
+            <div class="row" style="padding-top:40px; padding-bottom:40px;">
+                <h2 style="color:#333333; ">MISSION AND VISION</h2>
+                <p style="text-align:justify; color:#333333">
+                    To become a leader in supply chain management by providing value-added, cost effective and customized services to our customers and overseas partners. To continuously improve our skill and ability to do things more effectively, efficiently and consistently. Our employees, partners and customer are our most important assets. Our growth has been and will continue to be achieved by strong collaboration with our customers, employees and partners.
+                    <br><br>
+                    We are striving to interpret a policy based on innovative management to develop a true lead in integrated transportation systems through improvisation the existing ability of serving professionals.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div style="clear:both"></div><br>
+    <div>
+        <img src="/ClientResourcesFiles/img/logos.jpg" alt="" class="img-responsive displayed">
+    </div>
+    <div style="clear:both"></div><br>
+
+
+    <div style="width:100%; background-color:#F7F7F7; padding-top:30px; padding-bottom:30px; ">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4" style="padding-right:30px; padding-left:30px;">
+                    <h2 style="color:#333333; ">About Company</h2>
+                    <p style="text-align:justify; color:#333333">
+                        We are serving exporters & Importers by means of providing highly professional logistic services. We excel in handling of Textile & Apparels, Pharmaceuticals, Leather Products, Home Appliances, Chemicals, Cement, Handicraft, Rice, Dangerous goods and perishables. We have defined our objectives by providing the customers state of the art facilities through designed professionals in their respective fields. All this is necessary to keep the group’s activities alive and forging in a market which is not only cost conscious but also remains vigilant on matters of service.
+                    </p>
+                </div>
+
+                <div class="col-lg-4" style="padding-right:30px; padding-left:30px;">
+                    <h2 style="color:#333333; padding-left:30px; ">Services</h2>
+                    <ul style="text-align:justify; color:#333333; line-height:195%">
+                        <li><a href="Sea-Freight.html">Sea Freight</a></li>
+                        <li><a href="Air-Freight.html">Air Freight</a></li>
+                        <li><a href="Project-Handling.html">Project Handling</a></li>
+                        <li><a href="Custom-Clearance.html">Custom Clearance</a></li>
+                        <li><a href="Road-Transportation.html">Road Transporation</a></li>
+                        <li><a href="Warehousing-and-Distribution.html"> Warehousing & Distribution</a></li>
+                    </ul>
+
+                    <br>
+                    <div style="padding-left:30px;">
+                        <a href="matrix-profile-project-2.pdf" target="_blank"><img src="/ClientResourcesFiles/img/pdf.png" alt="" class="img-responsive"></a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <img src="/ClientResourcesFiles/img/cont.jpg" alt="" class="img-responsive displayed">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both"></div><br>
+
+    <footer class="footer clearfix" style=" background-color:#E8E8E8">
+        <div class="container">
+            <div class="row">
+                <div style="float:left; font-size:small; font-family:Verdana, Geneva, Tahoma, sans-serif; color: #666666; padding-top:15px; padding-bottom:15px;">&copy;&nbsp; 2019. Matrix Logistics. All rights reserved.</div>
+                <div style="float:right; text-align:right;font-size:small; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#666666;padding-top:15px; padding-bottom:15px; "> info@matrixlogistic.com</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/ClientResourcesFiles/js/jquery-2.1.1.js"></script>
+    <script src="/ClientResourcesFiles/js/bootstrap.min.js"></script>
+    <script src="/ClientResourcesFiles/js/custom.js"></script>
+
+    <script type="text/javascript" src="/ClientResourcesFiles/engine1/wowslider.js"></script>
+    <script type="text/javascript" src="/ClientResourcesFiles/engine1/script.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnSearch").click(function () {
+                var id = $(".txtTrackingId").val();
+                  if (id == "" || id == null)
+                    return;
+                window.location = "/Home/Tracking/"+id;
+            });
+        });
+    </script>
+</body>
+</html>

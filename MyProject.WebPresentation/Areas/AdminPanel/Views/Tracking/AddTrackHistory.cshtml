@@ -1,4 +1,4 @@
-﻿@model MyProject.WebPresentation.Models.TrackingOrderViewModel
+﻿@model MyProject.Models.TrackingOrderViewModel
 
 @{
     ViewBag.Title = "AddTrackHistory";
@@ -65,16 +65,17 @@
 
                             <table style=" margin: 0 auto;">
                                 <tr>
-                                    <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Tracking.H_Date, new { @placeholder = "Date", @class = "form-control txtDate" , @readonly="readonly" })</div></td>
+                                    <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Tracking.H_Date, new { @placeholder = "Date", @class = "form-control txtDate", @readonly = "readonly" })</div></td>
                                     <td>
                                         <div class="form-group">
                                             <div class="clockpicker" data-placement="left" data-align="top" data-autoclose="true">
-                                                <input type="text" class="form-control txtTime" value="@DateTime.Now.ToString("HH:mm")"  readonly="readonly">
+                                                <input type="text" class="form-control txtTime" value="@DateTime.Now.ToString("HH:mm")" readonly="readonly">
                                             </div>
                                         </div>
                                     </td>
                                     <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Tracking.Location, new { @placeholder = "Location", @class = "form-control txtLocation" })</div></td>
                                     <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Tracking.Link, new { @placeholder = "Link", @class = "form-control txtLink" })</div></td>
+                                    <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Tracking.Pieces, new { @placeholder = "Pieces", @class = "form-control txtPieces" })</div></td>
                                     <td style="padding: 2px;"><div class="form-group">@Html.TextBoxFor(x => x.Tracking.Status, new { @placeholder = "Status", @class = "form-control txtStatus" })</div></td>
                                     <td style="padding: 2px;"><div class="form-group"><button id="btnAdd" class="btn btn-primary" style="height: 32px;margin-right: 25px;" type="submit">Add </button></div></td>
                                 </tr>
@@ -94,6 +95,7 @@
                             <th class="center">Date</th>
                             <th class="center">Time</th>
                             <th class="center">Location</th>
+                            <th class="center">Pieces</th>
                             <th class="center">Status</th>
                             <th class="right">Action</th>
                         </tr>
@@ -107,6 +109,7 @@
                             <td class="center">@item.H_Date</td>
                             <td class="center">@item.H_Time</td>
                             <td class="center">@item.Location</td>
+                            <td class="center">@item.Pieces</td>
                             @if (!string.IsNullOrEmpty(item.Link) && item.Link.Contains("http") && (item.Link.ToUpper().Contains("WWWW") || item.Link.ToUpper().Contains("COM")))
                             {
                                 <td class="center">   <a href='@item.Link' target="_blank">@item.Status</a> </td>
@@ -164,15 +167,17 @@
             var txtLocation = $(".txtLocation").val();
             var txtLink = $(".txtLink").val();
             var txtStatus = $(".txtStatus").val();
+            var txtPieces = $(".txtPieces").val();
             
             var txtOrderId = $(".txtOrderId").val();
 
-            if (txtDate == null || txtDate == "" || txtTime == null || txtTime == "" || txtLocation == null || txtLocation == "" || txtOrderId == null || txtOrderId == "" || txtStatus == null || txtStatus == "")
+            if (txtDate == null || txtDate == "" || txtTime == null || txtTime == "" || txtLocation == null || txtLocation == "" || txtOrderId == null || txtOrderId == "" || txtStatus == null || txtStatus == "" || txtPieces == null || txtPieces == "")
                 return;
 
-            var model = { H_Date: txtDate, H_Time: txtTime, Location: txtLocation, Link: txtLink, OrderId: txtOrderId, Status : txtStatus  };
+            var model = { H_Date: txtDate, H_Time: txtTime, Location: txtLocation, Link: txtLink, OrderId: txtOrderId, Status : txtStatus, Pieces : txtPieces  };
 
             $.post(URL, model, function (res) {
+
                 if (Table.length == 0) {
                     EmptyTable.append(res);
                 }
@@ -184,6 +189,7 @@
                 $(".txtLocation").val("");
                 $(".txtLink").val("");
                 $(".txtStatus").val("");
+                $(".txtPieces").val("");
 
             }).fail(function (response) {
                 $("#lblResult").val("Error Occured, Please contact admin");

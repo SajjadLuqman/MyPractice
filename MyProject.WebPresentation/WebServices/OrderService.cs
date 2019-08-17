@@ -6,7 +6,6 @@ using System.Web;
 using MyProject.Models;
 using MyProject.Core.Helpers;
 using MyProject.Core.Constants;
-using MyProject.WebPresentation.Models;
 
 namespace MyProject.WebServices
 {
@@ -23,6 +22,20 @@ namespace MyProject.WebServices
             else
             {
                 return new TrackingOrderViewModel() { ValidationMessage = new ValidationMessage() {  ErrorMessage = Content.Message } };
+            }
+        }
+
+        public TrackingOrderViewModel GetTrackHistory(string airWayBillNumberNumber)
+        {
+            var URL = string.Format(AppSettings.BaseApiUrl + ApiUrls.Order.GetTrackHistory, airWayBillNumberNumber);
+            var Content = Get<TrackingOrderViewModel>(URL);
+            if (Content.IsSuccessful)
+            {
+                return Content.Model;
+            }
+            else
+            {
+                return new TrackingOrderViewModel() { ValidationMessage = new ValidationMessage() { ErrorMessage = Content.Message } };
             }
         }
 

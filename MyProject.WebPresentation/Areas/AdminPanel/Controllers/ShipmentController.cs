@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MyProject.Models;
-using MyProject.WebPresentation.Models;
 using MyProject.WebServices;
 
 namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
