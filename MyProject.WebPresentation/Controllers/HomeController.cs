@@ -28,7 +28,8 @@ namespace MyProject.WebPresentation.Controllers
             var Model = _order.GetTrackHistory(Id);
             if(Model.ValidationMessage.HasError)
             {
-                return RedirectToAction("Index");
+                Model = new Models.TrackingOrderViewModel() { Order = new Models.Order(), TrackingList = new List<Models.Tracking>() };
+                ViewBag.Message = "Not Found";
             }
             return View(Model);
         }

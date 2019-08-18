@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
 {
-    public class TrackingController : Controller
+    public class TrackingController : BaseController
     {
         private OrderService _orderRepo;
         private TrackingService _trackRepo;

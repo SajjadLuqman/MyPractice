@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
 {
-    public class UserManageController : Controller
+    public class UserManageController : BaseController
     {
         private UserService _userRepo;
 

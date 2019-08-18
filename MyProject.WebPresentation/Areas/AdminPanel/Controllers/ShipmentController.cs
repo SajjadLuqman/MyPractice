@@ -8,7 +8,7 @@ using MyProject.WebServices;
 
 namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
 {
-    public class ShipmentController : Controller
+    public class ShipmentController : BaseController
     {
         private OrderService _orderService;
 

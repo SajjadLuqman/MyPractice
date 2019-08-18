@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminPanel\AdminPanelAreaRegistration.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\AdminController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\BaseController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\ShipmentController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\TrackingController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\UserManageController.cs" />
@@ -652,6 +653,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AdminPanel\Models\" />
+    <Folder Include="Areas\AdminPanel\Views\Base\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

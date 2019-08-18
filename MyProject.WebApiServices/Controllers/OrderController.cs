@@ -26,7 +26,14 @@ namespace MyProject.WebApiServices.Controllers
         {
             TrackingOrderViewModel Model = new TrackingOrderViewModel();
             Model.Order = _repo.GetByAirWayBillNumberNumber(airWayBillNumberNumber);
-            Model.TrackingList = _trackRepo.GetByOrderId(Model.Order.OrderId.ToString());
+            if(Model.Order!=null)
+            {
+                Model.TrackingList = _trackRepo.GetByOrderId(Model.Order.OrderId.ToString());
+            }
+            else
+            {
+                Model.ValidationMessage =new ValidationMessage() {  ErrorMessage = "Not Found" };
+            }
             return Ok(Model);
         }
 

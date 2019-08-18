@@ -6,16 +6,11 @@ using System.Web.Mvc;
 
 namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         // GET: AdminPanel/Admin
         public ActionResult Index()
         {
-            string accessTokenInSession = Convert.ToString(Session["token"]);
-            if (string.IsNullOrEmpty(accessTokenInSession))
-            {
-                return RedirectToAction("Login", "Account", new { area = "" });
-            }
             return View();
         }
     }
