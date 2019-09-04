@@ -24,6 +24,7 @@ namespace MyProject.WebPresentation.Controllers
             ControllerContext.HttpContext.Session["userId"] = null;
             ControllerContext.HttpContext.Session["userName"] = null;
             ControllerContext.HttpContext.Session["token"] = null;
+            ControllerContext.HttpContext.Session["userType"] = null;
             return View();
         }
 
@@ -33,11 +34,14 @@ namespace MyProject.WebPresentation.Controllers
                 var result = _userRepo.GetTokenLogin(users);
                 if (result != null && !string.IsNullOrEmpty(result.access_token))
                 {
-                    ControllerContext.HttpContext.Session["token"] = result.access_token;
-                    ControllerContext.HttpContext.Session["userId"] = _userRepo.GetAllUsers().Where(x=>x.UserName == users.UserName && x.Password== users.Password).FirstOrDefault().UserId;
-                    ControllerContext.HttpContext.Session["userName"] = users.UserName ;
-                    ControllerContext.HttpContext.Session["token"] = result.access_token;
-                    return RedirectToAction("Index", "Admin", new { area = "AdminPanel" });
+                      var userInfo = _userRepo.GetAllUsers().Where(x => x.UserName == users.UserName && x.Password == users.Password).FirstOrDefault();
+                        ControllerContext.HttpContext.Session["token"] = result.access_token;
+                        ControllerContext.HttpContext.Session["userId"] = userInfo.UserId;
+                        ControllerContext.HttpContext.Session["userName"] = users.UserName ;
+                        ControllerContext.HttpContext.Session["userType"] = userInfo.Type;
+                        ControllerContext.HttpContext.Session["token"] = result.access_token;
+
+                return RedirectToAction("Index", "Admin", new { area = "AdminPanel" });
                 }
                 else
                 {

@@ -12,7 +12,7 @@ namespace MyProject.Models
         public int? OrderId { get; set; }
 
         [Required(ErrorMessage = "Air Way Bill Number  Required")]
-        [MaxLength(50, ErrorMessage = "Max Length is 50 of Air Way Bill Number")]
+        [MaxLength(8, ErrorMessage = "Max Length is 8 of Air Way Bill Number")]
         public string AirWayBillNumberNumber { get; set; }
 
         [Required(ErrorMessage = "Shipper is Required")]
@@ -31,13 +31,20 @@ namespace MyProject.Models
         [MaxLength(50, ErrorMessage = "Max Length is 50 of Prot Of Deliver")]
         public string ProtOfDeliver { get; set; }
 
-        [Required(ErrorMessage = "MBL is Required")]
+
         [MaxLength(20, ErrorMessage = "Max Length is 20 of MBL")]
         public string MBL_Container_Number { get; set; }
 
-        [Required(ErrorMessage = "AWB is Required")]
-        [MaxLength(20, ErrorMessage = "Max Length is 20 of AWB")]
+        [MaxLength(20, ErrorMessage = "AWB Max Length is 20 of AWB")]
         public string AWB_Number_AirWayBill { get; set; }
+
+        [MaxLength(20, ErrorMessage = "MAWB Length is 20 of AWB")]
+        public string MAWB { get; set; }
+
+        [MaxLength(20, ErrorMessage = "HBL Length is 20 of AWB")]
+        public string HBL { get; set; }
+
+
 
         [Required(ErrorMessage = "Carrier is Required")]
         [MaxLength(50, ErrorMessage = "Max Length is 50 of Carrier")]
@@ -64,20 +71,15 @@ namespace MyProject.Models
         public string VesselNameAndVOY { get; set; }
 
         [Required(ErrorMessage = "COD is Required")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/mm/yyyy}", ApplyFormatInEditMode = true)]
         [MaxLength(10, ErrorMessage = "Max Length is 10 of COD")]
         public string COD { get; set; }
 
         [Required(ErrorMessage = "ETD is Required")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/mm/yyyy}", ApplyFormatInEditMode = true)]
         [MaxLength(10, ErrorMessage = "Max Length is 10 of ETD")]
         public string ETD { get; set; }
 
         [Required(ErrorMessage = "ETA is Required")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/mm/yyyy}", ApplyFormatInEditMode = true)]
         [MaxLength(10, ErrorMessage = "Max Length is 10 of ETA")]
         public string ETA { get; set; }
 
@@ -85,8 +87,8 @@ namespace MyProject.Models
         public string CurrentStatus { get; set; }
 
 
-        public string CreateDate { get; set; }
-        public string ModifiedDate { get; set; }
+        public DateTime CreateDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
         public string CreatedBy { get; set; }
         public string ModifiedBy { get; set; }
         public string CreatedByName { get; set; }

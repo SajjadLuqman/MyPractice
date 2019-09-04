@@ -31,11 +31,11 @@ namespace MyProject.DAL.Repositories
         }
         public int Update(Order obj)
         {
-            return QueryExecutor.Execute(StoreProcedures.spOrderUpdate.ToString(), new { obj.OrderId, obj.AirWayBillNumberNumber, obj.AWB_Number_AirWayBill, obj.Carrier, obj.COD, obj.Commodity, obj.Consignee_ReceiverNameAddress, obj.ModifiedDate, obj.ModifiedBy, obj.CurrentStatus, obj.ETA, obj.ETD, obj.MBL_Container_Number, obj.NumberOfEquipments, obj.PortOfLanding, obj.ProtOfDeliver, obj.Shipper_SenderNameAddress, obj.VesselNameAndVOY, obj.Volume, obj.Weight });
+            return QueryExecutor.Execute(StoreProcedures.spOrderUpdate.ToString(), new { obj.OrderId, obj.AirWayBillNumberNumber, obj.AWB_Number_AirWayBill, obj.Carrier, obj.COD, obj.Commodity, obj.Consignee_ReceiverNameAddress, obj.ModifiedDate, obj.ModifiedBy, obj.CurrentStatus, obj.ETA, obj.ETD, obj.MBL_Container_Number, obj.NumberOfEquipments, obj.PortOfLanding, obj.ProtOfDeliver, obj.Shipper_SenderNameAddress, obj.VesselNameAndVOY, obj.Volume, obj.Weight , obj.HBL,obj.MAWB });
         }
         public int Insert(Order obj)
         {
-            return QueryExecutor.Execute(StoreProcedures.spOrderInsert.ToString(), new { obj.AirWayBillNumberNumber, obj.AWB_Number_AirWayBill, obj.Carrier, obj.COD,obj.Commodity,obj.Consignee_ReceiverNameAddress,obj.CreateDate,obj.CreatedBy,obj.CurrentStatus,obj.ETA,obj.ETD,obj.MBL_Container_Number,obj.NumberOfEquipments,obj.PortOfLanding,obj.ProtOfDeliver,obj.Shipper_SenderNameAddress,obj.VesselNameAndVOY,obj.Volume,obj.Weight });
+            return QueryExecutor.Execute(StoreProcedures.spOrderInsert.ToString(), new { obj.AirWayBillNumberNumber, obj.AWB_Number_AirWayBill, obj.Carrier, obj.COD,obj.Commodity,obj.Consignee_ReceiverNameAddress,obj.CreateDate,obj.CreatedBy,obj.CurrentStatus,obj.ETA,obj.ETD,obj.MBL_Container_Number,obj.NumberOfEquipments,obj.PortOfLanding,obj.ProtOfDeliver,obj.Shipper_SenderNameAddress,obj.VesselNameAndVOY,obj.Volume,obj.Weight, obj.HBL, obj.MAWB });
         }
     }
 }

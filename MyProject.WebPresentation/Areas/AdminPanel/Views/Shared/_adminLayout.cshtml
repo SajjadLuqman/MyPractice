@@ -1,5 +1,8 @@
 ﻿<!DOCTYPE html>
+@{
 
+  var Role =  Session["userType"].ToString().ToUpper() == "ADMIN" ? "Admin" : "User";
+}
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -38,8 +41,8 @@
             });
 
             $(document).on('click', '.clockpicker', function () {
-                  $(this).clockpicker();
-               // $(this).clockpicker('show');
+                $(this).clockpicker();
+                // $(this).clockpicker('show');
             });
         })
 
@@ -62,14 +65,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Admin</span></a>
+            <a class="" href="/"><span class="navbar-brand"><span class="fa fa-paper-plane"></span>@Role</span></a>
         </div>
 
         <div class="navbar-collapse collapse" style="height: 1px;">
             <ul id="main-menu" class="nav navbar-nav navbar-right">
                 <li class="dropdown hidden-xs">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> Admin
+                        <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> @Role
                         <i class="fa fa-caret-down"></i>
                     </a>
 
@@ -92,14 +95,16 @@
                     <li><a href="/AdminPanel/Shipment/NewShipment"><span class="fa fa-caret-right"></span> New Shipment</a></li>
                 </ul>
             </li>
-
-            <li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-briefcase"></i> Users </a></li>
-            <li>
-                <ul class="accounts-menu nav nav-list collapse">
-                    <li><a href="/AdminPanel/UserManage/NewUser"><span class="fa fa-caret-right"></span> Add New User</a></li>
-                    <li><a href="/AdminPanel/UserManage/AllUsers"><span class="fa fa-caret-right"></span> All Users</a></li>
-                </ul>
-            </li>
+            @if (Session["userType"].ToString().ToUpper() == "ADMIN")
+            {
+                <li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-briefcase"></i> Users </a></li>
+                <li>
+                    <ul class="accounts-menu nav nav-list collapse">
+                        <li><a href="/AdminPanel/UserManage/NewUser"><span class="fa fa-caret-right"></span> Add New User</a></li>
+                        <li><a href="/AdminPanel/UserManage/AllUsers"><span class="fa fa-caret-right"></span> All Users</a></li>
+                    </ul>
+                </li>
+            }
 
         </ul>
     </div>

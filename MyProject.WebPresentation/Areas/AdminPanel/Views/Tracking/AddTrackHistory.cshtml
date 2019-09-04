@@ -22,7 +22,7 @@
     @Html.HiddenFor(x => x.Order.OrderId,new { @class="txtOrderId"})
     <div class="card">
         <div class="card-header">
-            H. Airway Bill #:
+            Tracking Number #:
             <strong>  @Html.DisplayFor(x => x.Order.AirWayBillNumberNumber) </strong>
             &nbsp; &nbsp; &nbsp; Created Date:
             <strong> @Convert.ToDateTime(Model.Order.CreateDate).ToString("dd/MM/yyyy")</strong>
@@ -36,7 +36,7 @@
                 <div class="col-sm-6" style="margin-left:20px;">
                     <h6 class="mb-3">Shipper:</h6>
                     <div>Name & Address:  <strong>  @Model.Order.Shipper_SenderNameAddress</strong> </div>
-                    <div>Port of Landing:  <strong>@Model.Order.PortOfLanding</strong> </div>
+                    <div>Port of Loading:  <strong>@Model.Order.PortOfLanding</strong> </div>
                     <div>MBL #: <strong>@Model.Order.MBL_Container_Number</strong> </div>
                     <div>Carrier:  <strong>@Model.Order.Carrier</strong>  </div>
                     <div>No of Equipments:  <strong>@Model.Order.NumberOfEquipments</strong>  </div>
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="col-sm-5">
-                    <h6 class="mb-3">Shipper:</h6>
+                    <h6 class="mb-3">Consignee:</h6>
                     <div> Name & Address:   <strong>@Model.Order.Consignee_ReceiverNameAddress</strong> </div>
                     <div> Port Of Deliver:  <strong>@Model.Order.ProtOfDeliver</strong></div>
                     <div>Vessel Name & VOY:  <strong>@Model.Order.VesselNameAndVOY</strong> </div>

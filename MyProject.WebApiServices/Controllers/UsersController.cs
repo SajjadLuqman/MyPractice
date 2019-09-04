@@ -18,12 +18,13 @@ namespace MyProject.WebApiServices.Controllers
             _repo = new BLUsers();
         }
 
-        [Authorize]
+      
         [Route(URLs.Users.GetUsers)]
         [HttpGet]
         public IHttpActionResult Get()
         {
-            return Ok(_repo.Get());
+            var Response = _repo.Get();
+            return Ok(Response);
         }
 
         [Authorize]

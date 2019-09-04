@@ -40,7 +40,7 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
         [HttpPost]
         public ActionResult AddTrack(Tracking track)
         {
-            track.CreateDate = DateTime.Now.ToString();
+            track.CreateDate = DateTime.Now;
             track.CreatedBy = Session["userId"].ToString();
 
             var Result = _trackRepo.AddTracking(track);

@@ -60,28 +60,34 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
             {
                 var Result = new ValidationMessage();
 
-                if (order.OrderId==0 || order.OrderId == null)
+                if (order.OrderId == 0 || order.OrderId == null)
                 {
-                    order.CreateDate = DateTime.Now.ToString();
+                    order.CreateDate = DateTime.Now;
                     order.CreatedBy = Session["userId"].ToString();
                     order.CurrentStatus = "1";
 
-                    if(_orderService.GetByAirWayBillNumberNumber(order.AirWayBillNumberNumber)==null)
+                    var IsExistRespose = _orderService.GetByAirWayBillNumberNumber(order.AirWayBillNumberNumber);
+                    if (IsExistRespose == null || IsExistRespose.AirWayBillNumberNumber != order.AirWayBillNumberNumber)
                     {
                         Result = _orderService.AddOrder(order);
                     }
                     else
                     {
-                        ViewBag.Message = "Air Way Bill Number Already Exist.";
+                        ViewBag.Message = "Already Exist";
                         return View();
                     }
-                }
-                else
+            }
+            else
+            {
+                order.ModifiedDate = DateTime.Now;
+                order.ModifiedBy= Session["userId"].ToString();
+                Result = _orderService.UpdateOrder(order);
+
+                if (Result.HasError)
                 {
-                    order.ModifiedDate = DateTime.Now.ToString();
-                    order.ModifiedBy= Session["userId"].ToString();
-                    Result = _orderService.UpdateOrder(order);
+                    ViewBag.Message = "Air Way Bill Number Already Exist.";
                 }
+            }
 
                 if (!Result.HasError)
                 {
