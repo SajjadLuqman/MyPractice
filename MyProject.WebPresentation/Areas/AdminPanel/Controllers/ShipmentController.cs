@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using MyProject.Models;
@@ -25,6 +26,7 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
                 var model = _orderService.GetOrderById(Convert.ToInt32(Id));
                 if (!model.ValidationMessage.HasError)
                 {
+                    model.AirWayBillNumberNumber = model.AirWayBillNumberNumber.Substring(0, 3) + "-" + model.AirWayBillNumberNumber.Substring(3, 5) + "-" + model.AirWayBillNumberNumber.Substring(5, 2);
                     return View(model);
                 }
                 else
@@ -42,64 +44,74 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
         [HttpPost]
         public ActionResult NewShipment(Order order)
         {
-            string[] formats = { "dd/mm/yyyy", "dd/M/yyyy", "d/M/yyyy", "d/MM/yyyy",
+            try
+            {
+                order.AirWayBillNumberNumber = Regex.Replace(order.AirWayBillNumberNumber, "[^0-9.]", "");
+
+                string[] formats = { "dd/mm/yyyy", "dd/M/yyyy", "d/M/yyyy", "d/MM/yyyy",
                     "dd/MM/yy", "dd/M/yy", "d/M/yy", "d/MM/yy"};
 
-            DateTime validDate;
-            var isCODDateValid = DateTime.TryParseExact(order.COD, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out validDate);
-            if (!isCODDateValid) ModelState.AddModelError("COD", "COD needs to be a valid date.");
+                DateTime validDate;
+                var isCODDateValid = DateTime.TryParseExact(order.COD, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out validDate);
+                if (!isCODDateValid) ModelState.AddModelError("COD", "COD needs to be a valid date.");
 
-            var isETADateValid = DateTime.TryParseExact(order.ETA, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out validDate);
-            if (!isETADateValid) ModelState.AddModelError("ETA", "ETA needs to be a valid date.");
+                var isETADateValid = DateTime.TryParseExact(order.ETA, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out validDate);
+                if (!isETADateValid) ModelState.AddModelError("ETA", "ETA needs to be a valid date.");
 
-            var isETDDateValid = DateTime.TryParseExact(order.ETD, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out validDate);
-            if (!isETDDateValid) ModelState.AddModelError("COD", "ETD needs to be a valid date.");
+                var isETDDateValid = DateTime.TryParseExact(order.ETD, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out validDate);
+                if (!isETDDateValid) ModelState.AddModelError("COD", "ETD needs to be a valid date.");
 
 
-            if (ModelState.IsValid)
-            {
-                var Result = new ValidationMessage();
-
-                if (order.OrderId == 0 || order.OrderId == null)
+                if (ModelState.IsValid)
                 {
-                    order.CreateDate = DateTime.Now;
-                    order.CreatedBy = Session["userId"].ToString();
-                    order.CurrentStatus = "1";
+                    var Result = new ValidationMessage();
 
-                    var IsExistRespose = _orderService.GetByAirWayBillNumberNumber(order.AirWayBillNumberNumber);
-                    if (IsExistRespose == null || IsExistRespose.AirWayBillNumberNumber != order.AirWayBillNumberNumber)
+                    if (order.OrderId == 0 || order.OrderId == null)
                     {
-                        Result = _orderService.AddOrder(order);
+                        order.CreateDate = DateTime.Now;
+                        order.CreatedBy = Session["userId"].ToString();
+                        order.CurrentStatus = "1";
+
+                        var IsExistRespose = _orderService.GetByAirWayBillNumberNumber(order.AirWayBillNumberNumber);
+                        if (IsExistRespose == null || IsExistRespose.AirWayBillNumberNumber != order.AirWayBillNumberNumber)
+                        {
+                            Result = _orderService.AddOrder(order);
+                        }
+                        else
+                        {
+                            ViewBag.Message = "Already Exist";
+                            return View();
+                        }
                     }
                     else
                     {
-                        ViewBag.Message = "Already Exist";
-                        return View();
+                        order.ModifiedDate = DateTime.Now;
+                        order.ModifiedBy = Session["userId"].ToString();
+                        Result = _orderService.UpdateOrder(order);
+
+                        if (Result.HasError)
+                        {
+                            ViewBag.Message = "Air Way Bill Number Already Exist.";
+                        }
                     }
+
+                    if (!Result.HasError)
+                    {
+                        ViewBag.Message = "Successfully Shipment Saved.";
+                        ModelState.Clear();
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("ErrorOccurd!", Result.ErrorMessage);
+                    }
+                }
+                return View();
             }
-            else
+            catch (Exception ex)
             {
-                order.ModifiedDate = DateTime.Now;
-                order.ModifiedBy= Session["userId"].ToString();
-                Result = _orderService.UpdateOrder(order);
-
-                if (Result.HasError)
-                {
-                    ViewBag.Message = "Air Way Bill Number Already Exist.";
-                }
+                return View();
             }
-
-                if (!Result.HasError)
-                {
-                    ViewBag.Message = "Successfully Shipment Saved.";
-                    ModelState.Clear();
-                }
-                else
-                {
-                   ModelState.AddModelError("ErrorOccurd!", Result.ErrorMessage);
-                }
-            }
-            return View();
+            
         }
 
         public ActionResult AllShipment()

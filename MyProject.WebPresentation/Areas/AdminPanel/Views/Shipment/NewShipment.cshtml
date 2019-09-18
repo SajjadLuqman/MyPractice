@@ -6,7 +6,7 @@
 }
 
 <div class="header">
-  
+
 
     @if (Model == null || Model.OrderId == null || Model.OrderId == 0)
     {
@@ -50,9 +50,9 @@
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane active in" id="home">
                     <div id="tab">
-                        <div class="form-group ">
+                        <div class="form-group">
                             <label>Tracking Number #</label>
-                            @Html.TextBoxFor(x => x.AirWayBillNumberNumber, new { @class = "form-control", MaxLength = "50" })
+                            @Html.TextBoxFor(x => x.AirWayBillNumberNumber, new { @class = "form-control txtAirWayBillNumberNumber", MaxLength = "50" })
                         </div>
                         <div class="form-group col-md-6">
                             <label>Shipper</label>
@@ -168,7 +168,13 @@
 
 <style>
     .ColorRed {
-    color: red;
-    
+        color: red;
     }
 </style>
+<script src="~/Scripts/jquery.mask.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('.txtAirWayBillNumberNumber').mask('000-00000-00');
+    })
+</script>

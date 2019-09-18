@@ -6,299 +6,300 @@
 
 
 
-    <div class="row">
-        <h1 style="text-align:center"> @ViewBag.Message </h1>
-        <h2 style="text-align:center">Tracking</h2>
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
-            <table border="1" cellspacing="0" width="100%" bordercolor="#666666" cellpadding="0">
-                <tr>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" colspan="6">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">Tracking Number #: @Model.Order.AirWayBillNumberNumber</font>
-                            </b>
-                    </td>
-                </tr>
-                <tr>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">Shipper:</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" colspan="2">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <font size="1" face="Verdana">@Model.Order.Shipper_SenderNameAddress</font>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" colspan="2">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">Consignee:</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <font size="1" face="Verdana">@Model.Order.Consignee_ReceiverNameAddress</font>
-                    </td>
-                </tr>
-                <tr>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">Port of Loading:</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="398" colspan="2">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <font size="1" face="Verdana">
-                                @Model.Order.PortOfLanding
-                            </font>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="398" colspan="2">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">Port of Delivery:</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <font size="1" face="Verdana">
-                                @Model.Order.ProtOfDeliver
-                            </font>
-                    </td>
-                </tr>
-                <tr>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">MBL #</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="398" colspan="2">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <font size="1" face="Verdana"> @Model.Order.MBL_Container_Number</font>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="398" colspan="2">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">HAWB #</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <font size="1" face="Verdana"> @Model.Order.AWB_Number_AirWayBill</font>
-                    </td>
-                </tr>
-                <tr>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">HBL #</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="398" colspan="2">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <font size="1" face="Verdana"> @Model.Order.HBL</font>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="398" colspan="2">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">MAWB #</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <font size="1" face="Verdana"> @Model.Order.MAWB</font>
-                    </td>
-                </tr>
-                <tr>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">Carrier:</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="995" colspan="5">
-                        <p style="text-indent: 1px; margin: 10px">@Model.Order.Carrier</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">No of Equipments:</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="995" colspan="5">
-                        <p style="text-indent: 1px; margin: 10px">@Model.Order.NumberOfEquipments</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">Commodity:</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="995" colspan="5">
-                        <p style="text-indent: 1px; margin: 10px">@Model.Order.Commodity</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">Weight:</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
-                        <p style="text-indent: 1px; margin: 10px">@Model.Order.Weight</p>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">Volume:</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
-                        <p style="text-indent: 1px; margin: 10px">@Model.Order.Volume</p>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">Vessel Name &amp; VOY:</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
-                        <p style="text-indent: 1px; margin: 10px">@Model.Order.VesselNameAndVOY</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">COD:</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
-                        <p style="text-indent: 1px; margin: 10px">@Model.Order.COD</p>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">ETD:</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
-                        <p style="text-indent: 1px; margin: 10px">@Model.Order.ETD</p>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">ETA:</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
-                        <p style="text-indent: 1px; margin: 10px">@Model.Order.ETA</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
-                        <p style="text-indent: 1px; margin: 10px">
-                            <b>
-                                <font size="1" face="Verdana">Current Status:</font>
-                            </b>
-                    </td>
-                    <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="995" colspan="5">
+<div class="row">
+    <h1 style="text-align:center"> @ViewBag.Message </h1>
+    <h2 style="text-align:center">Tracking</h2>
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <table border="1" cellspacing="0" width="100%" bordercolor="#666666" cellpadding="0">
+            <tr>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" colspan="6">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">Tracking Number #: @Model.Order.AirWayBillNumberNumber</font>
+                        </b>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">Shipper:</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" colspan="2">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <font size="1" face="Verdana">@Model.Order.Shipper_SenderNameAddress</font>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" colspan="2">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">Consignee:</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <font size="1" face="Verdana">@Model.Order.Consignee_ReceiverNameAddress</font>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">Port of Loading:</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="398" colspan="2">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <font size="1" face="Verdana">
+                            @Model.Order.PortOfLanding
+                        </font>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="398" colspan="2">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">Port of Delivery:</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <font size="1" face="Verdana">
+                            @Model.Order.ProtOfDeliver
+                        </font>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">MBL #</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="398" colspan="2">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <font size="1" face="Verdana"> @Model.Order.MBL_Container_Number</font>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="398" colspan="2">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">HAWB #</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <font size="1" face="Verdana"> @Model.Order.AWB_Number_AirWayBill</font>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">HBL #</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="398" colspan="2">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <font size="1" face="Verdana"> @Model.Order.HBL</font>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="398" colspan="2">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">MAWB #</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <font size="1" face="Verdana"> @Model.Order.MAWB</font>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">Carrier:</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="995" colspan="5">
+                    <p style="text-indent: 1px; margin: 10px">@Model.Order.Carrier</p>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">No of Equipments:</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="995" colspan="5">
+                    <p style="text-indent: 1px; margin: 10px">@Model.Order.NumberOfEquipments</p>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">Commodity:</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="995" colspan="5">
+                    <p style="text-indent: 1px; margin: 10px">@Model.Order.Commodity</p>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">Weight:</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
+                    <p style="text-indent: 1px; margin: 10px">@Model.Order.Weight</p>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">Volume:</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
+                    <p style="text-indent: 1px; margin: 10px">@Model.Order.Volume</p>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">Vessel Name &amp; VOY:</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
+                    <p style="text-indent: 1px; margin: 10px">@Model.Order.VesselNameAndVOY</p>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">COD:</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
+                    <p style="text-indent: 1px; margin: 10px">@Model.Order.COD</p>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">ETD:</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
+                    <p style="text-indent: 1px; margin: 10px">@Model.Order.ETD</p>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">ETA:</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="199">
+                    <p style="text-indent: 1px; margin: 10px">@Model.Order.ETA</p>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="198">
+                    <p style="text-indent: 1px; margin: 10px">
+                        <b>
+                            <font size="1" face="Verdana">Current Status:</font>
+                        </b>
+                </td>
+                <td bgcolor="#E8E8E4" height="30" valign="middle" align="left" width="995" colspan="5">
 
-                        @if (Model.TrackingList != null && Model.TrackingList.Count > 0)
-                        {
-                            <p style="text-indent: 1px; margin: 10px">@Model.TrackingList.Last().Status</p>
-                        }
-                        else
-                        {
-                            <p style="text-indent: 1px; margin: 10px">No Process Yet</p>
-                        }
-
-                    </td>
-                </tr>
-            </table>
-            <br>
-
-            @if (Model.TrackingList != null && Model.TrackingList.Count > 0)
-            {
-                int a = 0;
-                <table border="1" cellspacing="0" width="100%" bordercolor="#666666" cellpadding="0">
-
-                    @foreach (var item in Model.TrackingList)
+                    @if (Model.TrackingList != null && Model.TrackingList.Count > 0)
                     {
-                        a += 1;
-                        <tr>
-                            <td bgcolor="#E8E8E4" width="476" height="30" colspan="2">
-                                <p style="margin: 10px">
-                                    <b>
-                                        <font size="1" face="Verdana">
-                                            @item.H_Date
-                                        </font>
-                                    </b>
-                            </td>
-                            <td bgcolor="#E8E8E4" width="239" height="30">
-                                <p style="margin: 10px"><b><font size="1" face="Verdana">Location</font></b>
-                            </td>
-                            <td bgcolor="#E8E8E4" width="239" height="30">
-                                <p style="margin: 10px"><b><font size="1" face="Verdana">Time</font></b>
-                            </td>
-                            <td bgcolor="#E8E8E4" width="239" height="30">
-                                <p style="margin: 10px"><b><font size="1" face="Verdana">Pieces</font></b>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="238" height="30">
-                                <p style="margin: 10px"><font face="Verdana" size="1">@a</font>
-                            </td>
-                            <td width="238" height="30">
-                                <p style="margin: 10px">
-                                    <font face="Verdana" size="1">
-
-                                        @if (!string.IsNullOrEmpty(item.Link) && item.Link.Contains("http") && (item.Link.ToUpper().Contains("WWWW") || item.Link.ToUpper().Contains("COM")))
-                                        {
-                                            <a href='@item.Link' target="_blank">@item.Status</a>
-                                        }
-                                        else
-                                        {
-                                            @item.Status
-                                        }
-
-
-                                    </font>
-                            </td>
-                            <td width="239" height="30">
-                                <p style="margin: 10px">
-                                    <font face="Verdana" size="1">
-                                        @item.Location
-                                    </font>
-                            </td>
-                            <td width="239" height="30">
-                                <p style="margin: 10px"><font face="Verdana" size="1">@item.H_Time</font>
-                            </td>
-                            <td width="239" height="30">
-                                <p style="margin: 10px">
-                                    <font face="Verdana" size="1">
-                                        @item.Pieces
-                                    </font>
-                            </td>
-                        </tr>
+                        <p style="text-indent: 1px; margin: 10px">@Model.TrackingList.Last().Status</p>
+                    }
+                    else
+                    {
+                        <p style="text-indent: 1px; margin: 10px">No Process Yet</p>
                     }
 
-                </table>
-            }
+                </td>
+            </tr>
+        </table>
+        <br>
 
-            <br><br>
-        </div>
-        <div class="col-lg-2"></div>
-        <div class="addthis_inline_share_toolbox"></div>
+        @if (Model.TrackingList != null && Model.TrackingList.Count > 0)
+        {
+            int a = 0;
+            <table border="1" cellspacing="0" width="100%" bordercolor="#666666" cellpadding="0">
+
+                @foreach (var item in Model.TrackingList)
+                {
+                    a += 1;
+                    <tr>
+                        <td bgcolor="#E8E8E4" width="476" height="30" colspan="2">
+                            <p style="margin: 10px">
+                                <b>
+                                    <font size="1" face="Verdana">
+                                        @item.H_Date
+                                    </font>
+                                </b>
+                        </td>
+                        <td bgcolor="#E8E8E4" width="239" height="30">
+                            <p style="margin: 10px"><b><font size="1" face="Verdana">Location</font></b>
+                        </td>
+                        <td bgcolor="#E8E8E4" width="239" height="30">
+                            <p style="margin: 10px"><b><font size="1" face="Verdana">Time</font></b>
+                        </td>
+                        <td bgcolor="#E8E8E4" width="239" height="30">
+                            <p style="margin: 10px"><b><font size="1" face="Verdana">Pieces</font></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="238" height="30">
+                            <p style="margin: 10px"><font face="Verdana" size="1">@a</font>
+                        </td>
+                        <td width="238" height="30">
+                            <p style="margin: 10px">
+                                <font face="Verdana" size="1">
+
+                                    @if (!string.IsNullOrEmpty(item.Link) && item.Link.Contains("http") && (item.Link.ToUpper().Contains("WWWW") || item.Link.ToUpper().Contains("COM")))
+                                    {
+                                        <a href='@item.Link' target="_blank">@item.Status</a>
+                                    }
+                                    else
+                                    {
+                                        @item.Status
+                                    }
+
+
+                                </font>
+                        </td>
+                        <td width="239" height="30">
+                            <p style="margin: 10px">
+                                <font face="Verdana" size="1">
+                                    @item.Location
+                                </font>
+                        </td>
+                        <td width="239" height="30">
+                            <p style="margin: 10px"><font face="Verdana" size="1">@item.H_Time</font>
+                        </td>
+                        <td width="239" height="30">
+                            <p style="margin: 10px">
+                                <font face="Verdana" size="1">
+                                    @item.Pieces
+                                </font>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+
+        <br><br>
     </div>
+    <div class="col-lg-2"></div>
+    <div class="addthis_inline_share_toolbox"></div>
+</div>
+
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d6ff851e029504a"></script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d7fe4038801d7a3"></script>
