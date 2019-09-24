@@ -16,10 +16,6 @@ namespace MyProject.Models
         [MaxLength(12, ErrorMessage = "Max Length is 8 of Air Way Bill Number")]
         public string AirWayBillNumberNumber { get; set; }
 
-        public string AirWayBillNumberNumberA { get; set; }
-        public string AirWayBillNumberNumberB { get; set; }
-        public string AirWayBillNumberNumberC { get; set; }
-
 
         [Required(ErrorMessage = "Shipper is Required")]
         [MaxLength(50, ErrorMessage = "Max Length is 50 of Shipper")]

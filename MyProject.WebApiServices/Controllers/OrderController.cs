@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Web.Http;
 
 namespace MyProject.WebApiServices.Controllers
@@ -24,10 +25,13 @@ namespace MyProject.WebApiServices.Controllers
         [HttpGet]
         public IHttpActionResult GetTrackHistory(string airWayBillNumberNumber)
         {
+            airWayBillNumberNumber = Regex.Replace(airWayBillNumberNumber, "[^a-zA-Z0-9.]", "");
             TrackingOrderViewModel Model = new TrackingOrderViewModel();
             Model.Order = _repo.GetByAirWayBillNumberNumber(airWayBillNumberNumber);
             if(Model.Order!=null)
             {
+                var number = Model.Order.AirWayBillNumberNumber;
+                Model.Order.AirWayBillNumberNumber = number.Substring(0, 3) + "-" + number.Substring(3, 5) + "-" + number.Substring(8, 2);
                 Model.TrackingList = _trackRepo.GetByOrderId(Model.Order.OrderId.ToString());
             }
             else
@@ -42,7 +46,13 @@ namespace MyProject.WebApiServices.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            return Ok(_repo.Get());
+            var Orders = _repo.Get();
+            foreach (var item in Orders)
+            {
+                var number = item.AirWayBillNumberNumber;
+                item.AirWayBillNumberNumber = number.Substring(0, 3) + "-" + number.Substring(3, 5) + "-" + number.Substring(8, 2);
+            }
+            return Ok(Orders);
         }
 
         [Authorize]
@@ -50,7 +60,13 @@ namespace MyProject.WebApiServices.Controllers
         [HttpGet]
         public IHttpActionResult GetById(string OrderId)
         {
-            return Ok(_repo.GetById(Convert.ToInt32(OrderId)));
+            var Order = _repo.GetById(Convert.ToInt32(OrderId));
+            if (Order != null)
+            {
+                var number = Order.AirWayBillNumberNumber;
+                Order.AirWayBillNumberNumber = number.Substring(0, 3) + "-" + number.Substring(3, 5) + "-" + number.Substring(8, 2);
+            }
+            return Ok(Order);
         }
 
         [Authorize]
@@ -58,7 +74,13 @@ namespace MyProject.WebApiServices.Controllers
         [HttpGet]
         public IHttpActionResult GetByAirWayBillNumberNumber(string airWayBillNumberNumber)
         {
-            return Ok(_repo.GetByAirWayBillNumberNumber(airWayBillNumberNumber));
+            var Order = _repo.GetByAirWayBillNumberNumber(airWayBillNumberNumber);
+            if(Order!=null)
+            {
+                var number = Order.AirWayBillNumberNumber;
+                Order.AirWayBillNumberNumber = number.Substring(0, 3) + "-" + number.Substring(3, 5) + "-" + number.Substring(8, 2);
+            }
+            return Ok(Order);
         }
 
         [Authorize]

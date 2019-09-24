@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/ClientResourcesFiles/css/bootstrap.min.css">
     <link rel="stylesheet" href="/ClientResourcesFiles/style.css">
     <link rel="stylesheet" href="/ClientResourcesFiles/css/stylesheet.css">
+    <link rel="icon" type="gif" href="favicon.gif" />
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
@@ -36,7 +37,7 @@
                     <div style="float:right; padding-top:10px;">
                         <div id="mailchimp-form">
                             <div class="email-input">
-                                <input id="mailchimp-input"  class="txtTrackingId" type="email" placeholder="Enter your Tracking ID">
+                                <input id="mailchimp-input" class="txtTrackingId" type="email" placeholder="Enter your Tracking ID">
                                 <button id="btnSearch" class="email-submit" type="submit"><i class="fa fa-sign-in"></i></button>
                             </div>
                         </div>
@@ -140,9 +141,10 @@
                 var id = $(".txtTrackingId").val();
                 if (id == "" || id == null)
                     return;
-                window.location = "/Home/Tracking/"+id;
+                window.location = "/Home/Tracking/" + id;
             });
         });
     </script>
+
 </body>
 </html>

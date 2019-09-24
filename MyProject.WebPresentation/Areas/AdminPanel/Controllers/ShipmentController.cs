@@ -26,7 +26,6 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
                 var model = _orderService.GetOrderById(Convert.ToInt32(Id));
                 if (!model.ValidationMessage.HasError)
                 {
-                    model.AirWayBillNumberNumber = model.AirWayBillNumberNumber.Substring(0, 3) + "-" + model.AirWayBillNumberNumber.Substring(3, 5) + "-" + model.AirWayBillNumberNumber.Substring(5, 2);
                     return View(model);
                 }
                 else
@@ -46,7 +45,7 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
         {
             try
             {
-                order.AirWayBillNumberNumber = Regex.Replace(order.AirWayBillNumberNumber, "[^0-9.]", "");
+                order.AirWayBillNumberNumber = Regex.Replace(order.AirWayBillNumberNumber, "[^a-zA-Z0-9.]", "");
 
                 string[] formats = { "dd/mm/yyyy", "dd/M/yyyy", "d/M/yyyy", "d/MM/yyyy",
                     "dd/MM/yy", "dd/M/yy", "d/M/yy", "d/MM/yy"};
@@ -122,12 +121,17 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
                 ViewBag.Message = "Error Occured, Please contact admin";
                 return View(new TrackingOrderViewModel() {  Orders = new List<Order>() });
             }
+            if(Model.Orders.Count > 0)
+            {
+                Model.Orders = Model.Orders.OrderByDescending(x=>x.CreateDate).ToList();
+            }
             return View(Model);
         }
 
         [HttpPost]
         public ActionResult SearchByAirWayBillNumber(string airWayBillNumberNumber)
         {
+            airWayBillNumberNumber = Regex.Replace(airWayBillNumberNumber, "[^a-zA-Z0-9.]", "");
             var model = new List<Order>();
 
             if(airWayBillNumberNumber == "0")
@@ -137,7 +141,9 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
             }
             else
             {
-                 model.Add(_orderService.GetByAirWayBillNumberNumber(airWayBillNumberNumber));
+                var response = _orderService.GetByAirWayBillNumberNumber(airWayBillNumberNumber);
+                if(response!=null)
+                model.Add(response);
             }
 
             var URL = "~/Areas/AdminPanel/Views/Shipment/_SearchShipments.cshtml";

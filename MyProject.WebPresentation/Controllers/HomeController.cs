@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -25,6 +26,7 @@ namespace MyProject.WebPresentation.Controllers
 
         public ActionResult Tracking(string Id)
         {
+            Id = Regex.Replace(Id, "[^a-zA-Z0-9.]", "");
             var Model = _order.GetTrackHistory(Id);
             if(Model.ValidationMessage.HasError)
             {
