@@ -334,6 +334,7 @@
     <Content Include="images\faces\6b.png" />
     <Content Include="images\faces\7b.jpg" />
     <Content Include="images\faces\images.txt" />
+    <Content Include="images\favicon.gif" />
     <Content Include="images\gallery\319768_8498.jpg" />
     <Content Include="images\gallery\403944_5580.jpg" />
     <Content Include="images\gallery\43616_6206.jpg" />

@@ -47,20 +47,6 @@ namespace MyProject.WebPresentation.Areas.AdminPanel.Controllers
             {
                 order.AirWayBillNumberNumber = Regex.Replace(order.AirWayBillNumberNumber, "[^a-zA-Z0-9.]", "");
 
-                string[] formats = { "dd/mm/yyyy", "dd/M/yyyy", "d/M/yyyy", "d/MM/yyyy",
-                    "dd/MM/yy", "dd/M/yy", "d/M/yy", "d/MM/yy"};
-
-                DateTime validDate;
-                var isCODDateValid = DateTime.TryParseExact(order.COD, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out validDate);
-                if (!isCODDateValid) ModelState.AddModelError("COD", "COD needs to be a valid date.");
-
-                var isETADateValid = DateTime.TryParseExact(order.ETA, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out validDate);
-                if (!isETADateValid) ModelState.AddModelError("ETA", "ETA needs to be a valid date.");
-
-                var isETDDateValid = DateTime.TryParseExact(order.ETD, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out validDate);
-                if (!isETDDateValid) ModelState.AddModelError("COD", "ETD needs to be a valid date.");
-
-
                 if (ModelState.IsValid)
                 {
                     var Result = new ValidationMessage();

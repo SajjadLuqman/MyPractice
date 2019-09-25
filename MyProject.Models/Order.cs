@@ -72,16 +72,13 @@ namespace MyProject.Models
         [MaxLength(50, ErrorMessage = "Max Length is 50 of Vessel Name & VOY")]
         public string VesselNameAndVOY { get; set; }
 
-        [Required(ErrorMessage = "COD is Required")]
         [MaxLength(10, ErrorMessage = "Max Length is 10 of COD")]
         public string COD { get; set; }
 
-        [Required(ErrorMessage = "ETD is Required")]
         [DataType(DataType.Date)]
         [MaxLength(10, ErrorMessage = "Max Length is 10 of ETD")]
         public string ETD { get; set; }
 
-        [Required(ErrorMessage = "ETA is Required")]
         [MaxLength(10, ErrorMessage = "Max Length is 10 of ETA")]
         public string ETA { get; set; }
 

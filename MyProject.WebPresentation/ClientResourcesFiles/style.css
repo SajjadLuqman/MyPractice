@@ -154,8 +154,7 @@ IMG.displayed {
 
 .top-header img.logo{
 	margin-bottom: 0px;
-	margin-top: 5px;
-	
+	margin-top: 0px;
 }
 
 .picColor{ 
@@ -271,7 +270,7 @@ padding-left:10px;
 }
 
 
-.about h4 hover:{
+.about h4 hover{
 	font-size: 1.6em;
 	color: #ffffff;
 	margin-bottom: 0px;
